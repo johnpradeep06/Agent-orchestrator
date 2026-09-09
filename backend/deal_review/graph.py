@@ -19,8 +19,8 @@ LLM_RETRY = RetryPolicy(max_attempts=3, initial_interval=1.0, backoff_factor=2.0
 # each call to what it actually needs so 3 parallel compliance batches don't reserve 3x more
 # than they'll use and starve the shared budget.
 EXTRACTION_MAX_TOKENS = 5000
-COMPLIANCE_MAX_TOKENS = 2000
-RISK_MAX_TOKENS = 3000
+COMPLIANCE_MAX_TOKENS = 2800
+RISK_MAX_TOKENS = 2200
 
 
 def _make_rule_batches(rules: list[Rule]) -> list[list[Rule]]:
@@ -144,8 +144,11 @@ def compliance_batch_node(state: DealState) -> dict:
 
 def risk_summary_node(state: DealState) -> dict:
     llm = get_llm(max_tokens=RISK_MAX_TOKENS).with_structured_output(RiskSummary)
+    # Groq caps a single request at prompt + max_tokens <= 8000 — 15 rules' full rationales
+    # plus generous max_tokens for the response can blow past that, so keep this compact.
     compliance_text = "\n".join(
-        f"- [{r.rule_id}] {r.status} ({r.severity}): {r.rationale}" for r in state.get("rule_results", [])
+        f"- [{r.rule_id}] {r.status} ({r.severity}): {r.rationale[:200]}"
+        for r in state.get("rule_results", [])
     ) or "No compliance results."
     gaps_text = "\n".join(state.get("extraction_gaps", [])) or "None noted."
     prompt = risk_prompt(_terms_text(state["terms"]), compliance_text, gaps_text)
