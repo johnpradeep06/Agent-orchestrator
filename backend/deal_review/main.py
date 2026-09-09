@@ -57,35 +57,38 @@ def _load_rules(data: bytes | None) -> list[Rule]:
     return [Rule(**r) for r in raw]
 
 
-async def _run_pipeline(run_id: str, filename: str, doc_bytes: bytes, rules: list[Rule]):
+def _run_pipeline_sync(loop: asyncio.AbstractEventLoop, run_id: str, filename: str, doc_bytes: bytes, rules: list[Rule]):
+    """Runs on a worker thread (see create_run) — GRAPH.stream() makes blocking LLM HTTP calls,
+    and running that directly on the asyncio event loop would freeze every other request
+    (health checks, status polls, other runs' SSE streams) for the run's whole duration."""
+    emit = lambda event: events.emit_threadsafe(loop, run_id, event)  # noqa: E731
     session = get_session()
     try:
-        events.emit(run_id, {"stage": "Document Ingestion", "status": "active"})
+        emit({"stage": "Document Ingestion", "status": "active"})
         try:
             full_text, line_pages, notes = load_document(filename, doc_bytes)
             clause_index, page_map = build_clause_index(full_text, line_pages)
         except Exception as e:
-            events.emit(run_id, {"stage": "Document Ingestion", "status": "error", "message": str(e)})
+            emit({"stage": "Document Ingestion", "status": "error", "message": str(e)})
             run = session.get(Run, run_id)
             run.status = "error"
             run.error = f"Ingestion failed: {e}"
             session.commit()
-            events.close(run_id)
+            events.close_threadsafe(loop, run_id)
             return
 
-        events.emit(
-            run_id,
+        emit(
             {
                 "stage": "Document Ingestion",
                 "status": "done",
                 "message": f"{len(clause_index)} clauses indexed",
                 "notes": notes,
-            },
+            }
         )
 
         initial_state = seeded_initial_state(clause_index, page_map, rules, document_text=full_text, run_id=run_id)
 
-        events.emit(run_id, {"stage": "Term Extraction", "status": "active"})
+        emit({"stage": "Term Extraction", "status": "active"})
         seen: set[str] = set()
         final_state: dict = initial_state
 
@@ -94,46 +97,38 @@ async def _run_pipeline(run_id: str, filename: str, doc_bytes: bytes, rules: lis
 
             if chunk.get("retry_count", 0) and "retry_count" not in seen:
                 seen.add("retry_count")
-                events.emit(
-                    run_id,
-                    {"stage": "Term Extraction", "status": "retrying", "message": "Re-verifying unmatched citations"},
-                )
+                emit({"stage": "Term Extraction", "status": "retrying", "message": "Re-verifying unmatched citations"})
 
             if chunk.get("terms") and "terms" not in seen:
                 seen.add("terms")
-                events.emit(
-                    run_id,
-                    {"stage": "Term Extraction", "status": "done", "message": f"{len(chunk['terms'])} terms found"},
-                )
-                events.emit(run_id, {"stage": "Compliance Review", "status": "active"})
+                emit({"stage": "Term Extraction", "status": "done", "message": f"{len(chunk['terms'])} terms found"})
+                emit({"stage": "Compliance Review", "status": "active"})
 
             if chunk.get("rule_results") and "rule_results" not in seen:
                 seen.add("rule_results")
-                events.emit(
-                    run_id,
+                emit(
                     {
                         "stage": "Compliance Review",
                         "status": "done",
                         "message": f"{len(chunk['rule_results'])}/{len(rules)} rules evaluated",
-                    },
+                    }
                 )
-                events.emit(run_id, {"stage": "Risk & Summary", "status": "active"})
+                emit({"stage": "Risk & Summary", "status": "active"})
 
             if chunk.get("executive_summary") and "executive_summary" not in seen:
                 seen.add("executive_summary")
-                events.emit(
-                    run_id,
+                emit(
                     {
                         "stage": "Risk & Summary",
                         "status": "done",
                         "message": f"{len(chunk.get('risks', []))} risks identified",
-                    },
+                    }
                 )
 
             new_errors = [e for e in chunk.get("errors", []) if e not in seen]
             for e in new_errors:
                 seen.add(e)
-                events.emit(run_id, {"stage": "System", "status": "warning", "message": e})
+                emit({"stage": "System", "status": "warning", "message": e})
 
         report_md = render_markdown(final_state)
         run = session.get(Run, run_id)
@@ -142,15 +137,14 @@ async def _run_pipeline(run_id: str, filename: str, doc_bytes: bytes, rules: lis
         run.report_markdown = report_md
         session.commit()
 
-        events.emit(
-            run_id,
+        emit(
             {
                 "stage": "Report",
                 "status": "done",
                 "overall_status": final_state.get("overall_status"),
                 "escalation_count": len(final_state.get("escalations", [])),
                 "report_markdown": report_md,
-            },
+            }
         )
     except Exception as e:
         run = session.get(Run, run_id)
@@ -158,9 +152,9 @@ async def _run_pipeline(run_id: str, filename: str, doc_bytes: bytes, rules: lis
             run.status = "error"
             run.error = f"{e}\n{traceback.format_exc()}"
             session.commit()
-        events.emit(run_id, {"stage": "System", "status": "error", "message": str(e)})
+        emit({"stage": "System", "status": "error", "message": str(e)})
     finally:
-        events.close(run_id)
+        events.close_threadsafe(loop, run_id)
         session.close()
 
 
@@ -182,7 +176,10 @@ async def create_run(file: UploadFile = File(...), rules_file: UploadFile | None
     session.commit()
     session.close()
 
-    asyncio.create_task(_run_pipeline(run_id, file.filename, doc_bytes, rules))
+    loop = asyncio.get_running_loop()
+    asyncio.create_task(
+        asyncio.to_thread(_run_pipeline_sync, loop, run_id, file.filename, doc_bytes, rules)
+    )
     return {"run_id": run_id}
 
 

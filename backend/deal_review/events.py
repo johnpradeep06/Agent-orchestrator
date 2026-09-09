@@ -33,6 +33,17 @@ def close(run_id: str):
     get_queue(run_id).put_nowait(None)  # sentinel
 
 
+def emit_threadsafe(loop: asyncio.AbstractEventLoop, run_id: str, event: dict):
+    """The pipeline runs in a worker thread (see main._run_pipeline) so it doesn't block the
+    event loop during blocking LLM calls; asyncio.Queue isn't safe to touch off-thread, so route
+    the call back onto the loop instead of calling emit() directly."""
+    loop.call_soon_threadsafe(emit, run_id, event)
+
+
+def close_threadsafe(loop: asyncio.AbstractEventLoop, run_id: str):
+    loop.call_soon_threadsafe(close, run_id)
+
+
 async def stream(run_id: str):
     q = get_queue(run_id)
     while True:
