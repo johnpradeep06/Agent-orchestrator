@@ -7,13 +7,16 @@ LLM_PROVIDER = os.getenv("LLM_PROVIDER", "groq")  # groq | openrouter | anthropi
 LLM_MODEL = os.getenv("LLM_MODEL", "")  # empty -> provider default below
 
 _DEFAULT_MODELS = {
-    "groq": "llama-3.3-70b-versatile",
+    "groq": "openai/gpt-oss-120b",  # Groq's model lineup rotates; check GET /openai/v1/models if this 404s
     "openrouter": "meta-llama/llama-3.3-70b-instruct:free",
     "anthropic": "claude-sonnet-5",
     "openai": "gpt-4o-mini",
 }
 
-VISION_MODEL = os.getenv("VISION_MODEL", "meta-llama/llama-4-scout-17b-16e-instruct")
+# ponytail: no vision-capable model in Groq's current free lineup, so the OCR fallback below
+# degrades to a normal (failed) LLM call rather than actually reading the image. Upgrade path:
+# point VISION_MODEL at a vision model on whichever provider has one when this matters in practice.
+VISION_MODEL = os.getenv("VISION_MODEL", "openai/gpt-oss-120b")
 
 
 def get_llm(temperature: float = 0.0):
