@@ -24,3 +24,22 @@ export async function fetchRun(runId: string) {
   if (!res.ok) throw new Error(`Failed to fetch run ${runId}`);
   return res.json();
 }
+
+export async function fetchRuns(limit = 50, offset = 0) {
+  const res = await fetch(`${API_BASE}/runs?limit=${limit}&offset=${offset}`);
+  if (!res.ok) throw new Error("Failed to fetch historical runs");
+  return res.json();
+}
+
+export async function fetchDocumentStats() {
+  const res = await fetch(`${API_BASE}/documents/stats`);
+  if (!res.ok) throw new Error("Failed to fetch document statistics");
+  return res.json();
+}
+
+export async function deleteRun(runId: string) {
+  const res = await fetch(`${API_BASE}/runs/${runId}`, { method: "DELETE" });
+  if (!res.ok) throw new Error(`Failed to delete run ${runId}`);
+  return res.json();
+}
+

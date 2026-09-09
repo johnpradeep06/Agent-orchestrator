@@ -1,4 +1,5 @@
 "use client";
+import OrchestrationGraph from "./OrchestrationGraph";
 
 const STEPS = [
   {
@@ -34,7 +35,13 @@ const COLOR_CLASSES: Record<string, string> = {
   amber: "text-amber border-amber/30 shadow-glow-amber",
 };
 
-export default function HomePage({ onGetStarted }: { onGetStarted: () => void }) {
+export default function HomePage({
+  onGetStarted,
+  onViewHistory,
+}: {
+  onGetStarted: () => void;
+  onViewHistory?: () => void;
+}) {
   return (
     <div className="relative">
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-grid-glow" />
@@ -52,32 +59,36 @@ export default function HomePage({ onGetStarted }: { onGetStarted: () => void })
         </h1>
 
         <p className="fade-in mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-          Four AI agents extract terms, check compliance, assess risk, and summarize a deal —
-          every claim traced back to a clause and quote, with evidence you can verify, not just
-          trust.
+          Central Orchestrator coordinates specialized agents to extract terms, check compliance, assess risk, and summarize deals —
+          every claim traced back to a clause and quote with verifiable evidence.
         </p>
 
-        <div className="fade-in mt-10 flex flex-col items-center gap-3 sm:flex-row">
+        <div className="fade-in mt-10 flex flex-wrap items-center justify-center gap-3 sm:flex-row">
           <button
             onClick={onGetStarted}
             className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-accent to-accent2 px-8 py-3.5 text-sm font-semibold text-white shadow-glow-accent transition-transform hover:scale-[1.03]"
           >
-            <span className="relative">Get Started →</span>
+            <span className="relative">Start Review →</span>
           </button>
+          {onViewHistory && (
+            <button
+              onClick={onViewHistory}
+              className="rounded-xl border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-ink transition-all hover:border-accent2 hover:bg-surface2"
+            >
+              View Document History
+            </button>
+          )}
           <a
             href="#how-it-works"
-            className="rounded-xl border border-border px-8 py-3.5 text-sm font-semibold text-ink transition-all hover:border-accent/50 hover:shadow-glow-accent"
+            className="rounded-xl border border-border px-6 py-3.5 text-sm font-semibold text-muted transition-all hover:text-ink hover:border-borderHover"
           >
             How it works
           </a>
         </div>
 
-        {/* Hero image placeholder — replace this block with your own <img> / illustration */}
-        <div className="float-slow fade-in mt-16 flex h-72 w-full max-w-4xl items-center justify-center rounded-3xl border border-dashed border-border bg-surface/60 sm:h-96">
-          <div className="text-center">
-            <p className="text-sm font-medium text-dim">[ hero image placeholder ]</p>
-            <p className="mt-1 text-xs text-dim">Swap this block for a product screenshot or illustration</p>
-          </div>
+        {/* Hero Interactive Agent Orchestration Graph */}
+        <div className="fade-in mt-14 w-full">
+          <OrchestrationGraph stages={[]} isHeroDemo={true} />
         </div>
       </section>
 

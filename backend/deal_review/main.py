@@ -77,12 +77,18 @@ def _run_pipeline_sync(loop: asyncio.AbstractEventLoop, run_id: str, filename: s
             events.close_threadsafe(loop, run_id)
             return
 
+        sample_clauses = [
+            {"id": cid, "text": text[:200] + "..." if len(text) > 200 else text}
+            for cid, text in list(clause_index.items())[:10]
+        ]
         emit(
             {
                 "stage": "Document Ingestion",
                 "status": "done",
                 "message": f"{len(clause_index)} clauses indexed",
                 "notes": notes,
+                "clause_count": len(clause_index),
+                "sample_clauses": sample_clauses,
             }
         )
 
@@ -101,27 +107,62 @@ def _run_pipeline_sync(loop: asyncio.AbstractEventLoop, run_id: str, filename: s
 
             if chunk.get("terms") and "terms" not in seen:
                 seen.add("terms")
-                emit({"stage": "Term Extraction", "status": "done", "message": f"{len(chunk['terms'])} terms found"})
+                terms_serialized = [
+                    t.model_dump(mode="json") if hasattr(t, "model_dump") else t
+                    for t in chunk["terms"]
+                ]
+                keywords = sorted(list({t.get("name") for t in terms_serialized if t.get("name")}))
+                categories = sorted(list({t.get("category") for t in terms_serialized if t.get("category")}))
+                emit(
+                    {
+                        "stage": "Term Extraction",
+                        "status": "done",
+                        "message": f"{len(terms_serialized)} terms and {len(keywords)} keywords extracted",
+                        "terms": terms_serialized,
+                        "keywords": keywords,
+                        "categories": categories,
+                        "extraction_gaps": chunk.get("extraction_gaps", []),
+                        "retry_count": chunk.get("retry_count", 0),
+                    }
+                )
                 emit({"stage": "Compliance Review", "status": "active"})
 
             if chunk.get("rule_results") and "rule_results" not in seen:
                 seen.add("rule_results")
+                rule_results_serialized = [
+                    r.model_dump(mode="json") if hasattr(r, "model_dump") else r
+                    for r in chunk["rule_results"]
+                ]
+                passed_c = len([r for r in rule_results_serialized if r.get("status") == "pass"])
+                failed_c = len([r for r in rule_results_serialized if r.get("status") == "fail"])
+                review_c = len([r for r in rule_results_serialized if r.get("status") == "needs_human_review"])
                 emit(
                     {
                         "stage": "Compliance Review",
                         "status": "done",
-                        "message": f"{len(chunk['rule_results'])}/{len(rules)} rules evaluated",
+                        "message": f"{len(rule_results_serialized)}/{len(rules)} rules evaluated ({passed_c} pass, {failed_c} fail, {review_c} review)",
+                        "rule_results": rule_results_serialized,
+                        "passed_count": passed_c,
+                        "failed_count": failed_c,
+                        "review_count": review_c,
                     }
                 )
                 emit({"stage": "Risk & Summary", "status": "active"})
 
             if chunk.get("executive_summary") and "executive_summary" not in seen:
                 seen.add("executive_summary")
+                risks_serialized = [
+                    r.model_dump(mode="json") if hasattr(r, "model_dump") else r
+                    for r in chunk.get("risks", [])
+                ]
                 emit(
                     {
                         "stage": "Risk & Summary",
                         "status": "done",
-                        "message": f"{len(chunk.get('risks', []))} risks identified",
+                        "message": f"{len(risks_serialized)} risks identified",
+                        "risks": risks_serialized,
+                        "executive_summary": chunk.get("executive_summary"),
+                        "follow_up_actions": chunk.get("follow_up_actions", []),
                     }
                 )
 
@@ -143,6 +184,7 @@ def _run_pipeline_sync(loop: asyncio.AbstractEventLoop, run_id: str, filename: s
                 "status": "done",
                 "overall_status": final_state.get("overall_status"),
                 "escalation_count": len(final_state.get("escalations", [])),
+                "escalations": final_state.get("escalations", []),
                 "report_markdown": report_md,
             }
         )
@@ -203,6 +245,7 @@ def get_run(run_id: str):
         "created_at": run.created_at.isoformat(),
         "error": run.error,
         "result": run.result_json,
+        "report_markdown": run.report_markdown,
     }
 
 
@@ -214,3 +257,72 @@ def get_report_md(run_id: str):
     if not run or not run.report_markdown:
         raise HTTPException(404, "Report not ready")
     return run.report_markdown
+
+
+@app.get("/runs")
+def list_runs(limit: int = 50, offset: int = 0):
+    session = get_session()
+    total = session.query(Run).count()
+    runs = session.query(Run).order_by(Run.created_at.desc()).offset(offset).limit(limit).all()
+    items = []
+    for r in runs:
+        res = r.result_json or {}
+        rule_results = res.get("rule_results", [])
+        items.append(
+            {
+                "run_id": r.id,
+                "filename": r.filename,
+                "rules_filename": r.rules_filename,
+                "status": r.status,
+                "created_at": r.created_at.isoformat() if r.created_at else None,
+                "error": r.error,
+                "overall_status": res.get("overall_status"),
+                "term_count": len(res.get("terms", [])),
+                "risk_count": len(res.get("risks", [])),
+                "escalation_count": len(res.get("escalations", [])),
+                "rule_pass_count": len([x for x in rule_results if x.get("status") == "pass"]),
+                "rule_fail_count": len([x for x in rule_results if x.get("status") == "fail"]),
+                "rule_review_count": len([x for x in rule_results if x.get("status") == "needs_human_review"]),
+            }
+        )
+    session.close()
+    return {"total": total, "items": items}
+
+
+@app.get("/documents/stats")
+def get_document_stats():
+    session = get_session()
+    total = session.query(Run).count()
+    completed = session.query(Run).filter(Run.status == "completed").count()
+    processing = session.query(Run).filter(Run.status == "processing").count()
+    error = session.query(Run).filter(Run.status == "error").count()
+
+    completed_runs = session.query(Run).filter(Run.status == "completed").all()
+    passed = sum(1 for r in completed_runs if r.result_json and r.result_json.get("overall_status") == "pass")
+    failed = sum(1 for r in completed_runs if r.result_json and r.result_json.get("overall_status") == "fail")
+    human_review = sum(1 for r in completed_runs if r.result_json and r.result_json.get("overall_status") == "human_review")
+
+    session.close()
+    return {
+        "total_documents": total,
+        "completed": completed,
+        "processing": processing,
+        "error": error,
+        "passed": passed,
+        "failed": failed,
+        "human_review": human_review,
+    }
+
+
+@app.delete("/runs/{run_id}")
+def delete_run(run_id: str):
+    session = get_session()
+    run = session.get(Run, run_id)
+    if not run:
+        session.close()
+        raise HTTPException(404, "Run not found")
+    session.delete(run)
+    session.commit()
+    session.close()
+    return {"status": "deleted", "run_id": run_id}
+
