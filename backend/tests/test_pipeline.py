@@ -15,7 +15,9 @@ from deal_review.ingestion import build_clause_index, load_document
 from deal_review.state import Rule, seeded_initial_state
 
 ROOT = Path(__file__).resolve().parents[1]
-HAS_KEY = bool(os.getenv("GROQ_API_KEY") or os.getenv("OPENROUTER_API_KEY") or os.getenv("ANTHROPIC_API_KEY"))
+HAS_KEY = bool(
+    os.getenv("GEMINI_API_KEY") or os.getenv("GROQ_API_KEY") or os.getenv("OPENROUTER_API_KEY") or os.getenv("ANTHROPIC_API_KEY")
+)
 
 pytestmark = pytest.mark.skipif(not HAS_KEY, reason="No LLM API key set")
 

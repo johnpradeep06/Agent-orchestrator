@@ -6,7 +6,7 @@ extract_terms -> [retry_extraction?] -> fan out one call per rule batch (complia
 from langgraph.graph import END, START, StateGraph
 from langgraph.types import RetryPolicy, Send
 
-from .config import get_llm
+from .config import get_structured_llm
 from .prompts import compliance_prompt, extraction_prompt, risk_prompt
 from .state import DealState, Rule, RuleBatchResult, RuleResult, RiskSummary, TermList
 from .verify import compute_escalations, needs_extraction_retry, verify_evidence, verify_terms
@@ -39,7 +39,7 @@ def _terms_text(terms) -> str:
 
 
 def extract_terms_node(state: DealState) -> dict:
-    llm = get_llm(max_tokens=EXTRACTION_MAX_TOKENS).with_structured_output(TermList)
+    llm = get_structured_llm(TermList, max_tokens=EXTRACTION_MAX_TOKENS)
     prompt = extraction_prompt(state["clause_index"])
     try:
         result: TermList = llm.invoke(prompt)
@@ -51,7 +51,7 @@ def extract_terms_node(state: DealState) -> dict:
 
 def retry_extraction_node(state: DealState) -> dict:
     failed = [t for t in state.get("terms", []) if not t.evidence.verified]
-    llm = get_llm(max_tokens=EXTRACTION_MAX_TOKENS).with_structured_output(TermList)
+    llm = get_structured_llm(TermList, max_tokens=EXTRACTION_MAX_TOKENS)
     if failed:
         failed_desc = "\n".join(
             f"- {t.name}: cited clause {t.evidence.clause_id}, quote \"{t.evidence.quote}\" "
@@ -117,7 +117,7 @@ def route_after_retry(state: DealState):
 
 def compliance_batch_node(state: DealState) -> dict:
     rules: list[Rule] = state["rules"]
-    llm = get_llm(max_tokens=COMPLIANCE_MAX_TOKENS).with_structured_output(RuleBatchResult)
+    llm = get_structured_llm(RuleBatchResult, max_tokens=COMPLIANCE_MAX_TOKENS)
     rules_text = "\n".join(f"[{r.id}] ({r.severity}) {r.description} — check: {r.check}" for r in rules)
     prompt = compliance_prompt(rules_text, _terms_text(state["terms"]), state["clause_index"])
     try:
@@ -143,7 +143,7 @@ def compliance_batch_node(state: DealState) -> dict:
 
 
 def risk_summary_node(state: DealState) -> dict:
-    llm = get_llm(max_tokens=RISK_MAX_TOKENS).with_structured_output(RiskSummary)
+    llm = get_structured_llm(RiskSummary, max_tokens=RISK_MAX_TOKENS)
     # Groq caps a single request at prompt + max_tokens <= 8000 — 15 rules' full rationales
     # plus generous max_tokens for the response can blow past that, so keep this compact.
     compliance_text = "\n".join(

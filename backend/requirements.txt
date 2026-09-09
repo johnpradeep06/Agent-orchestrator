@@ -6,6 +6,7 @@ langchain-core>=1.6
 langchain-groq>=1.1
 langchain-openai>=1.6
 langchain-anthropic>=1.7
+langchain-google-genai>=2.0
 pydantic>=2.13
 pyyaml>=6.0
 python-docx>=1.2

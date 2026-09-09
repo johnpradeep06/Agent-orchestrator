@@ -80,12 +80,19 @@ pytest                 # deterministic tests always run; LLM end-to-end tests
 
 ## LLM provider
 
-Provider-agnostic by design — swap with one env var, no code changes:
+Provider-agnostic **with automatic fallback**: `LLM_PROVIDER` sets the primary, and every
+structured-output call is chained through LangChain's `Runnable.with_fallbacks()` across
+`FALLBACK_ORDER` in `config.py` (`gemini → groq → openrouter`, skipping any provider without a key
+set) — so if the primary errors or hits a quota mid-run, that call retries on the next provider
+automatically instead of the node degrading to `needs_human_review`.
 
 ```
-LLM_PROVIDER=groq        # default: no credit card, generous free tier for agentic workloads
-LLM_PROVIDER=openrouter  # fallback: many free (":free") models, tighter free-tier rate limits
-LLM_PROVIDER=anthropic
+LLM_PROVIDER=gemini      # primary: 250k tokens/min free tier, no card, handles this workload
+                          # comfortably (confirmed under live load testing — see Limitations)
+LLM_PROVIDER=groq        # automatic fallback if configured; also selectable directly — no card,
+                          # but only an 8,000 tokens/min budget shared across every parallel call
+LLM_PROVIDER=openrouter  # also tried as a fallback if configured — many free (":free") models
+LLM_PROVIDER=anthropic   # selectable directly; not part of the automatic fallback chain
 LLM_PROVIDER=openai
 ```
 
@@ -137,15 +144,14 @@ LLM_PROVIDER=openai
 - Clause detection is heuristic (numbered-section pattern + blank-line-before-header
   check). It works well on standard contract formatting; a document with no numbering
   and no paragraph breaks would degrade to coarser, paragraph-level citations.
-- **Groq free tier is a real constraint in practice, confirmed under live testing**: it enforces
-  a per-minute token budget (not just a request-count limit), charged against each call's
-  `max_tokens` rather than actual output length. A handful of runs in quick succession can hit
-  a 429 mid-pipeline. The pipeline handles this exactly like any other node failure — the
-  affected rule(s) degrade to `needs_human_review` with the real error attached, nothing
-  crashes — but a burst of concurrent testing will visibly produce more escalations than a
-  quieter one. `max_tokens` is scoped per call type (extraction/compliance/risk) to stay well
-  under the shared budget even with 3 compliance batches in flight at once; the ceiling to push
-  further is a paid Groq tier or a slower/serialized batch schedule.
+- **Groq's free tier is a real constraint if used as the primary provider**, confirmed under live
+  testing: it enforces a per-minute token budget (not just a request-count limit), charged against
+  each call's `max_tokens` rather than actual output length, and a handful of runs in quick
+  succession could hit a 429 mid-pipeline. This is why Gemini (250k tokens/min) is the default
+  primary and Groq is a fallback rather than the other way around — with Gemini primary, repeated
+  live testing during development produced zero rate-limit failures. If Groq is ever hit (Gemini
+  down, both quotas exhausted), the failure-handling design still holds: the affected rule(s)
+  degrade to `needs_human_review` with the real error attached rather than crashing.
 
 ## Sample outputs
 

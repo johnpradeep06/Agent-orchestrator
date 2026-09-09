@@ -133,7 +133,7 @@
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
       "name": "Lender",
@@ -146,271 +146,383 @@
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Loan principal amount",
+      "name": "Loan Principal Amount",
       "value": "$4,200,000",
       "category": "value",
       "evidence": {
         "clause_id": "2.1",
-        "quote": "2.1 The Lender agrees to extend a term loan to the Borrower in the principal amount of $4,200,000 (the \"Loan\").",
+        "quote": "The Lender agrees to extend a term loan to the Borrower in the principal amount of $4,200,000 (the \"Loan\").",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Interest rate",
+      "name": "Interest Rate",
       "value": "7.25% per annum",
       "category": "rate",
       "evidence": {
         "clause_id": "3.1",
-        "quote": "3.1 The Loan shall bear interest at a fixed rate of 7.25% per annum, calculated on the outstanding principal balance, payable monthly in arrears.",
+        "quote": "The Loan shall bear interest at a fixed rate of 7.25% per annum, calculated on the outstanding principal balance, payable monthly in arrears.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Maturity period",
+      "name": "Interest Payment Frequency",
+      "value": "monthly in arrears",
+      "category": "obligation",
+      "evidence": {
+        "clause_id": "3.1",
+        "quote": "The Loan shall bear interest at a fixed rate of 7.25% per annum, calculated on the outstanding principal balance, payable monthly in arrears.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 1.0
+    },
+    {
+      "name": "Loan Maturity Term",
       "value": "84 months from the date of this Agreement",
       "category": "date",
       "evidence": {
         "clause_id": "4.1",
-        "quote": "4.1 The Loan shall mature 84 months from the date of this Agreement, at which point all outstanding principal and accrued interest shall be due in full.",
+        "quote": "The Loan shall mature 84 months from the date of this Agreement, at which point all outstanding principal and accrued interest shall be due in full.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Minimum Debt Service Coverage Ratio (DSCR)",
-      "value": "1.30x",
+      "name": "Debt Service Coverage Ratio (DSCR) Covenant",
+      "value": "minimum 1.30x",
       "category": "covenant",
       "evidence": {
         "clause_id": "5.1",
-        "quote": "5.1 Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, tested quarterly based on trailing twelve-month financials.",
+        "quote": "Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, tested quarterly based on trailing twelve-month financials.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Maximum Loan-to-Value (LTV) ratio",
-      "value": "82%",
+      "name": "Loan-to-Value (LTV) Ratio Covenant",
+      "value": "maximum 82%",
       "category": "covenant",
       "evidence": {
         "clause_id": "5.2",
-        "quote": "5.2 Borrower shall maintain a maximum Loan-to-Value (LTV) ratio of 82%, based on the most recent appraisal of the Collateral.",
+        "quote": "Borrower shall maintain a maximum Loan-to-Value (LTV) ratio of 82%, based on the most recent appraisal of the Collateral.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Maximum leverage ratio (Total Debt / EBITDA)",
-      "value": "3.2x",
+      "name": "Leverage Ratio Covenant (Total Debt / EBITDA)",
+      "value": "maximum 3.2x",
       "category": "covenant",
       "evidence": {
         "clause_id": "5.3",
-        "quote": "5.3 Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, tested quarterly.",
+        "quote": "Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, tested quarterly.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Working capital reserves",
-      "value": "Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves throughout the term of this Agreement",
+      "name": "Working Capital Covenant",
+      "value": "Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves",
       "category": "covenant",
       "evidence": {
         "clause_id": "5.4",
-        "quote": "5.4 Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves throughout the term of this Agreement.",
+        "quote": "Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves throughout the term of this Agreement.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Collateral description",
+      "name": "Collateral",
       "value": "first-priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744",
       "category": "collateral",
       "evidence": {
         "clause_id": "6.1",
-        "quote": "6.1 As security for the Loan, Borrower grants Lender a first-priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
+        "quote": "As security for the Loan, Borrower grants Lender a first-priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Collateral detailed description (Schedule A)",
-      "value": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
-      "category": "collateral",
-      "evidence": {
-        "clause_id": "11.1",
-        "quote": "11.1 Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
-        "page": null,
-        "verified": true,
-        "verification_method": "exact"
-      },
-      "confidence": 0.8
-    },
-    {
-      "name": "Quarterly unaudited financial statements delivery",
-      "value": "within 45 days of each fiscal quarter end",
+      "name": "Quarterly Financial Reporting Obligation",
+      "value": "Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end",
       "category": "obligation",
       "evidence": {
         "clause_id": "7.1",
-        "quote": "7.1 Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
+        "quote": "Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Annual audited financial statements delivery",
-      "value": "within 120 days of each fiscal year end",
+      "name": "Annual Financial Reporting Obligation",
+      "value": "Borrower shall deliver to Lender annual audited financial statements within 120 days of each fiscal year end",
       "category": "obligation",
       "evidence": {
         "clause_id": "7.1",
-        "quote": "7.1 Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
+        "quote": "Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Prepayment notice requirement",
+      "name": "Event of Default: Failure to Pay",
+      "value": "failure to pay any principal or interest when due",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "Each of the following constitutes an Event of Default under this Agreement: (a) failure to pay any principal or interest when due;",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 1.0
+    },
+    {
+      "name": "Event of Default: Breach of Financial Covenant",
+      "value": "breach of any financial covenant in Section 5",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "Each of the following constitutes an Event of Default under this Agreement: (b) breach of any financial covenant in Section 5;",
+        "page": null,
+        "verified": false,
+        "verification_method": "unverified"
+      },
+      "confidence": 0.4
+    },
+    {
+      "name": "Event of Default: Material Misrepresentation",
+      "value": "any material misrepresentation by Borrower",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "Each of the following constitutes an Event of Default under this Agreement: (c) any material misrepresentation by Borrower;",
+        "page": null,
+        "verified": false,
+        "verification_method": "unverified"
+      },
+      "confidence": 0.4
+    },
+    {
+      "name": "Event of Default: Insolvency or Bankruptcy",
+      "value": "insolvency or bankruptcy filing by Borrower",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "Each of the following constitutes an Event of Default under this Agreement: (d) insolvency or bankruptcy filing by Borrower;",
+        "page": null,
+        "verified": false,
+        "verification_method": "unverified"
+      },
+      "confidence": 0.4
+    },
+    {
+      "name": "Event of Default: Change of Control",
+      "value": "a change of control of Borrower without Lender's prior written consent",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "Each of the following constitutes an Event of Default under this Agreement: (e) a change of control of Borrower without Lender's prior written consent.",
+        "page": null,
+        "verified": false,
+        "verification_method": "unverified"
+      },
+      "confidence": 0.4
+    },
+    {
+      "name": "Prepayment Option",
+      "value": "Borrower may prepay the Loan in whole or in part at any time",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "9.1",
+        "quote": "Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 1.0
+    },
+    {
+      "name": "Prepayment Notice Period",
       "value": "30 days' written notice",
       "category": "obligation",
       "evidence": {
         "clause_id": "9.1",
-        "quote": "9.1 Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
+        "quote": "Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Prepayment premium condition",
+      "name": "Prepayment Premium",
       "value": "2% of the amount prepaid if prepayment occurs within the first 24 months",
-      "category": "condition",
+      "category": "value",
       "evidence": {
         "clause_id": "9.1",
-        "quote": "9.1 Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
+        "quote": "Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
-      "name": "Events of Default",
-      "value": "failure to pay any principal or interest when due; breach of any financial covenant in Section 5; any material misrepresentation by Borrower; insolvency or bankruptcy filing by Borrower; a change of control of Borrower without Lender's prior written consent",
-      "category": "condition",
-      "evidence": {
-        "clause_id": "8.1",
-        "quote": "8.1 Each of the following constitutes an Event of Default under this Agreement:\n(a) failure to pay any principal or interest when due;\n(b) breach of any financial covenant in Section 5;\n(c) any material misrepresentation by Borrower;\n(d) insolvency or bankruptcy filing by Borrower;\n(e) a change of control of Borrower without Lender's prior written consent.",
-        "page": null,
-        "verified": true,
-        "verification_method": "exact"
-      },
-      "confidence": 0.8
-    },
-    {
-      "name": "Governing law",
-      "value": "State of New York",
+      "name": "Governing Law",
+      "value": "laws of the State of New York",
       "category": "other",
       "evidence": {
         "clause_id": "10.1",
-        "quote": "10.1 This Agreement shall be governed by and construed in accordance with the laws of the State of New York.",
+        "quote": "This Agreement shall be governed by and construed in accordance with the laws of the State of New York.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
       },
-      "confidence": 0.8
+      "confidence": 1.0
+    },
+    {
+      "name": "Collateral Description",
+      "value": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
+      "category": "collateral",
+      "evidence": {
+        "clause_id": "11.1",
+        "quote": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 1.0
     }
   ],
   "extraction_gaps": [
-    "Exact maturity date (calendar date) not specified",
-    "Prepayment premium after the first 24 months not specified",
-    "Definition of \"Change of Control\" not provided",
-    "Appraised value of the collateral not disclosed",
-    "Interest calculation day count convention not stated",
-    "Amortization schedule not included",
-    "Conditions precedent to loan funding not listed",
-    "Exclusions (e.g., events not constituting default) not identified"
+    "The exact 'date of this Agreement' is not specified, preventing calculation of the precise maturity date.",
+    "The specific fiscal quarter end and fiscal year end dates for the Borrower are not provided."
   ],
   "rule_results": [
     {
       "rule_id": "POL-01",
       "rule_description": "Loan principal must not exceed the delegated authority limit of $5,000,000.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-      "evidence": [],
+      "status": "pass",
+      "rationale": "The extracted loan principal amount of $4,200,000 does not exceed the delegated authority limit of $5,000,000.",
+      "evidence": [
+        {
+          "clause_id": "2.1",
+          "quote": "The Lender agrees to extend a term loan to the Borrower in the principal amount of $4,200,000 (the \"Loan\").",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "high"
     },
     {
       "rule_id": "POL-02",
       "rule_description": "Minimum Debt Service Coverage Ratio (DSCR) of 1.25x is required.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-      "evidence": [],
+      "status": "pass",
+      "rationale": "The document specifies a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, which meets the policy requirement of 1.25x.",
+      "evidence": [
+        {
+          "clause_id": "5.1",
+          "quote": "Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, tested quarterly based on trailing twelve-month financials.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "critical"
     },
     {
       "rule_id": "POL-03",
       "rule_description": "Maximum Loan-to-Value (LTV) ratio is 75%.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-      "evidence": [],
+      "status": "fail",
+      "rationale": "The document specifies a maximum Loan-to-Value (LTV) ratio of 82%, which exceeds the policy's maximum limit of 75%.",
+      "evidence": [
+        {
+          "clause_id": "5.2",
+          "quote": "Borrower shall maintain a maximum Loan-to-Value (LTV) ratio of 82%, based on the most recent appraisal of the Collateral.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "high"
     },
     {
       "rule_id": "POL-04",
       "rule_description": "Maximum leverage (Debt/EBITDA) covenant must not exceed 3.5x.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-      "evidence": [],
+      "status": "pass",
+      "rationale": "The document specifies a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, which does not exceed the policy's maximum limit of 3.5x.",
+      "evidence": [
+        {
+          "clause_id": "5.3",
+          "quote": "Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, tested quarterly.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "high"
     },
     {
       "rule_id": "POL-05",
       "rule_description": "Interest rate structure (fixed or floating) must be unambiguous and internally consistent.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-      "evidence": [],
+      "status": "pass",
+      "rationale": "The document clearly states a fixed interest rate of 7.25% per annum without any conflicting information regarding the rate type or value.",
+      "evidence": [
+        {
+          "clause_id": "3.1",
+          "quote": "The Loan shall bear interest at a fixed rate of 7.25% per annum, calculated on the outstanding principal balance, payable monthly in arrears.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "critical"
     },
     {
       "rule_id": "POL-06",
       "rule_description": "Collateral must be explicitly identified and sufficiently described (asset type, location/identifier).",
       "status": "pass",
-      "rationale": "The collateral is identified as a first\u2011priority lien on the manufacturing facility at a specific address and further described with size, parcel acreage, and fixtures in Schedule A.",
+      "rationale": "The collateral is explicitly identified as a manufacturing facility with a specific address and further detailed description in Schedule A.",
       "evidence": [
         {
           "clause_id": "6.1",
-          "quote": "6.1 As security for the Loan, Borrower grants Lender a first-priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
+          "quote": "As security for the Loan, Borrower grants Lender a first-priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
         },
         {
           "clause_id": "11.1",
-          "quote": "11.1 Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
+          "quote": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
@@ -422,7 +534,7 @@
       "rule_id": "POL-07",
       "rule_description": "Borrower and lender parties must be fully and unambiguously identified.",
       "status": "pass",
-      "rationale": "Both parties are named with their legal entity designations in clause 1.",
+      "rationale": "Both the Borrower (Meridian Manufacturing LLC, a limited liability company) and the Lender (Highland Capital Bank, N.A.) are fully identified with their legal entity forms.",
       "evidence": [
         {
           "clause_id": "1",
@@ -438,11 +550,11 @@
       "rule_id": "POL-08",
       "rule_description": "Loan maturity/term must be explicitly stated.",
       "status": "pass",
-      "rationale": "The maturity period is specified as 84 months from the agreement date in clause 4.1.",
+      "rationale": "The loan maturity term is explicitly stated as 84 months from the date of the Agreement.",
       "evidence": [
         {
           "clause_id": "4.1",
-          "quote": "4.1 The Loan shall mature 84 months from the date of this Agreement, at which point all outstanding principal and accrued interest shall be due in full.",
+          "quote": "The Loan shall mature 84 months from the date of this Agreement, at which point all outstanding principal and accrued interest shall be due in full.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
@@ -454,11 +566,11 @@
       "rule_id": "POL-09",
       "rule_description": "Financial reporting obligations must be specified (frequency and type of reports).",
       "status": "pass",
-      "rationale": "Clause 7.1 details quarterly unaudited and annual audited financial statement delivery timelines.",
+      "rationale": "The document specifies periodic financial reporting requirements, including quarterly unaudited financial statements and annual audited financial statements, along with their respective deadlines.",
       "evidence": [
         {
           "clause_id": "7.1",
-          "quote": "7.1 Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
+          "quote": "Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
@@ -470,11 +582,11 @@
       "rule_id": "POL-10",
       "rule_description": "Events of default must be enumerated.",
       "status": "pass",
-      "rationale": "Clause 8.1 lists specific events that constitute an Event of Default.",
+      "rationale": "The document explicitly lists specific events that constitute an Event of Default.",
       "evidence": [
         {
           "clause_id": "8.1",
-          "quote": "8.1 Each of the following constitutes an Event of Default under this Agreement: (a) failure to pay any principal or interest when due; (b) breach of any financial covenant in Section 5; (c) any material misrepresentation by Borrower; (d) insolvency or bankruptcy filing by Borrower; (e) a change of control of Borrower without Lender's prior written consent.",
+          "quote": "Each of the following constitutes an Event of Default under this Agreement: (a) failure to pay any principal or interest when due; (b) breach of any financial covenant in Section 5; (c) any material misrepresentation by Borrower; (d) insolvency or bankruptcy filing by Borrower; (e) a change of control of Borrower without Lender's prior written consent.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
@@ -486,18 +598,18 @@
       "rule_id": "POL-11",
       "rule_description": "Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.",
       "status": "pass",
-      "rationale": "Schedule A is referenced in clause 6.1 and the full Schedule A content is provided in clause 11.1, so no dangling schedule reference exists.",
+      "rationale": "Schedule A, referenced in clause 6.1, is present as clause 11.1 in the document, providing the collateral description.",
       "evidence": [
         {
           "clause_id": "6.1",
-          "quote": "6.1 As security for the Loan, Borrower grants Lender a first-priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
+          "quote": "As security for the Loan, Borrower grants Lender a first-priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
         },
         {
           "clause_id": "11.1",
-          "quote": "11.1 Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
+          "quote": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
@@ -509,11 +621,11 @@
       "rule_id": "POL-12",
       "rule_description": "Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.",
       "status": "pass",
-      "rationale": "Clause 9.1 defines that prepayment is permitted with a 30\u2011day notice and specifies a 2% premium if prepaid within the first 24 months, satisfying the requirement to define prepayment terms.",
+      "rationale": "The document explicitly defines prepayment terms, including permission for prepayment, required notice, and applicable prepayment premium.",
       "evidence": [
         {
           "clause_id": "9.1",
-          "quote": "9.1 Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
+          "quote": "Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
@@ -525,19 +637,25 @@
       "rule_id": "POL-13",
       "rule_description": "Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.",
       "status": "needs_human_review",
-      "rationale": "The agreement does not contain any provision that states how frequently the borrower must certify compliance with the financial covenants.",
-      "evidence": [],
-      "severity": "low"
-    },
-    {
-      "rule_id": "POL-14",
-      "rule_description": "Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.",
-      "status": "pass",
-      "rationale": "Clause 10.1 explicitly provides the governing law (State of New York), meeting the requirement.",
+      "rationale": "The document specifies the frequency for testing financial covenants (quarterly) and for delivering financial statements (quarterly and annually), which are used to assess compliance. However, it does not explicitly state how often the borrower must *certify* covenant compliance.",
       "evidence": [
         {
-          "clause_id": "10.1",
-          "quote": "10.1 This Agreement shall be governed by and construed in accordance with the laws of the State of New York.",
+          "clause_id": "5.1",
+          "quote": "Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, tested quarterly based on trailing twelve-month financials.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        },
+        {
+          "clause_id": "5.3",
+          "quote": "Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, tested quarterly.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        },
+        {
+          "clause_id": "7.1",
+          "quote": "Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
@@ -546,14 +664,14 @@
       "severity": "low"
     },
     {
-      "rule_id": "POL-15",
-      "rule_description": "Any 'reasonable efforts' / 'commercially reasonable' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.",
-      "status": "fail",
-      "rationale": "The covenant uses the phrase \"commercially reasonable efforts\" without attaching an objective, measurable standard, which violates the policy requiring such a standard.",
+      "rule_id": "POL-14",
+      "rule_description": "Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.",
+      "status": "pass",
+      "rationale": "The document includes a clause explicitly stating that the agreement shall be governed by the laws of the State of New York.",
       "evidence": [
         {
-          "clause_id": "5.4",
-          "quote": "5.4 Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves throughout the term of this Agreement.",
+          "clause_id": "10.1",
+          "quote": "This Agreement shall be governed by and construed in accordance with the laws of the State of New York.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
@@ -564,154 +682,121 @@
   ],
   "risks": [
     {
-      "title": "Vague Working Capital Covenant",
-      "category": "operational",
+      "title": "Excessive Loan-to-Value Ratio",
+      "category": "financial",
       "severity": "high",
       "likelihood": "high",
-      "rationale": "Clause 5.4 requires \"commercially reasonable efforts\" without an objective metric, making enforcement and monitoring difficult.",
+      "rationale": "The loan permits an LTV of 82%, which exceeds the institution's maximum allowable 75%, increasing credit risk.",
       "evidence": [
         {
-          "clause_id": "5.4",
-          "quote": "Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves throughout the term of this Agreement",
+          "clause_id": "5.2",
+          "quote": "maximum 82%",
+          "page": null,
+          "verified": false,
+          "verification_method": "unverified"
+        }
+      ],
+      "mitigation": "Renegotiate the LTV covenant to meet the 75% policy limit or provide additional collateral to reduce exposure."
+    },
+    {
+      "title": "Missing Agreement Date",
+      "category": "operational",
+      "severity": "medium",
+      "likelihood": "high",
+      "rationale": "Without the agreement date, the exact loan maturity cannot be calculated, creating scheduling and cash\u2011flow uncertainty.",
+      "evidence": [
+        {
+          "clause_id": "4.1",
+          "quote": "84 months from the date of this Agreement",
           "page": null,
           "verified": true,
           "verification_method": "exact"
         }
       ],
-      "mitigation": "Amend the covenant to include a specific, measurable threshold for working capital reserves."
+      "mitigation": "Obtain the exact signing date of the Agreement to determine the precise maturity date and schedule."
     },
     {
-      "title": "Missing Collateral Appraisal Value",
-      "category": "financial",
-      "severity": "critical",
-      "likelihood": "high",
-      "rationale": "Without an appraised value, the 82% LTV covenant cannot be verified, exposing the lender to insufficient collateral coverage.",
-      "evidence": [],
-      "mitigation": "Obtain a recent independent appraisal of the manufacturing facility and attach it as an exhibit."
-    },
-    {
-      "title": "Undefined Change of Control",
-      "category": "legal",
-      "severity": "high",
-      "likelihood": "medium",
-      "rationale": "The agreement lists a change of control as an event of default but does not define the term, creating legal uncertainty.",
-      "evidence": [],
-      "mitigation": "Insert a clear definition of \"Change of Control\" consistent with industry standards."
-    },
-    {
-      "title": "Unspecified Interest Day Count Convention",
-      "category": "financial",
-      "severity": "medium",
-      "likelihood": "medium",
-      "rationale": "Clause 3.1 states the interest rate but omits the day count convention, leading to potential calculation disputes.",
-      "evidence": [],
-      "mitigation": "Add a provision specifying the applicable day count basis (e.g., 30/360)."
-    },
-    {
-      "title": "Absent Amortization Schedule",
-      "category": "financial",
-      "severity": "medium",
-      "likelihood": "medium",
-      "rationale": "The loan term and interest rate are defined, but no amortization schedule is provided, hindering cash\u2011flow planning and covenant testing.",
-      "evidence": [],
-      "mitigation": "Include a detailed amortization table as an exhibit."
-    },
-    {
-      "title": "Prepayment Premium After 24 Months Not Defined",
-      "category": "financial",
-      "severity": "low",
-      "likelihood": "low",
-      "rationale": "Clause 9.1 defines a 2% premium only for prepayments within the first 24 months, leaving later prepayment terms ambiguous.",
-      "evidence": [
-        {
-          "clause_id": "9.1",
-          "quote": "Prepayment premium condition (condition): 2% of the amount prepaid if prepayment occurs within the first 24 months",
-          "page": null,
-          "verified": false,
-          "verification_method": "unverified"
-        }
-      ],
-      "mitigation": "Clarify whether a premium applies after 24 months or state that no premium is required."
-    },
-    {
-      "title": "No Covenant Compliance Certification Frequency",
-      "category": "compliance",
-      "severity": "high",
-      "likelihood": "high",
-      "rationale": "Policy POL-13 flagged the absence of a required certification frequency for financial covenants.",
-      "evidence": [],
-      "mitigation": "Add a clause requiring the borrower to certify compliance with all financial covenants on a defined schedule (e.g., quarterly)."
-    },
-    {
-      "title": "Missing Conditions Precedent to Funding",
+      "title": "Undefined Fiscal Calendar for Reporting",
       "category": "operational",
       "severity": "medium",
       "likelihood": "medium",
-      "rationale": "The agreement does not list any conditions precedent, creating uncertainty about loan disbursement requirements.",
-      "evidence": [],
-      "mitigation": "Insert a comprehensive list of conditions precedent, such as insurance, legal opinions, and board approvals."
+      "rationale": "The lack of specified fiscal period dates impedes the Borrower's ability to meet reporting deadlines and the Lender's ability to monitor covenants.",
+      "evidence": [
+        {
+          "clause_id": "7.1",
+          "quote": "quarterly unaudited financial statements within 45 days of each fiscal quarter end",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        },
+        {
+          "clause_id": "7.1",
+          "quote": "annual audited financial statements within 120 days of each fiscal year end",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "mitigation": "Clarify the Borrower's fiscal quarter\u2011end and fiscal year\u2011end dates to ensure timely reporting and covenant testing."
     },
     {
-      "title": "Policy Check Failures (POL-01 to POL-05)",
-      "category": "compliance",
-      "severity": "critical",
-      "likelihood": "high",
-      "rationale": "Automated compliance checks returned critical errors, indicating potential undiscovered violations.",
-      "evidence": [],
-      "mitigation": "Conduct a manual compliance review of the entire agreement and resolve all flagged issues."
-    },
-    {
-      "title": "Exclusions to Events of Default Not Identified",
+      "title": "Unverified Event of Default Provisions",
       "category": "legal",
-      "severity": "low",
-      "likelihood": "low",
-      "rationale": "The agreement lists events of default but does not specify any exclusions, which could lead to disputes over default determination.",
+      "severity": "medium",
+      "likelihood": "medium",
+      "rationale": "Several default triggers are listed but were not verified, potentially leading to disputes over enforcement.",
       "evidence": [
         {
           "clause_id": "8.1",
-          "quote": "Events of Default (condition): failure to pay any principal or interest when due; breach of any financial covenant in Section 5; any material misrepresentation by Borrower; insolvency or bankruptcy filing by Borrower; a change of control of Borrower without Lender's prior written consent",
+          "quote": "Event of Default: ... breach of any financial covenant in Section 5",
+          "page": null,
+          "verified": false,
+          "verification_method": "unverified"
+        },
+        {
+          "clause_id": "8.1",
+          "quote": "Event of Default: ... any material misrepresentation by Borrower",
+          "page": null,
+          "verified": false,
+          "verification_method": "unverified"
+        },
+        {
+          "clause_id": "8.1",
+          "quote": "Event of Default: ... insolvency or bankruptcy filing by Borrower",
+          "page": null,
+          "verified": false,
+          "verification_method": "unverified"
+        },
+        {
+          "clause_id": "8.1",
+          "quote": "Event of Default: ... a change of control of Borrower without Lender's prior written consent",
           "page": null,
           "verified": false,
           "verification_method": "unverified"
         }
       ],
-      "mitigation": "Add a clause enumerating any exclusions or carve\u2011outs to the events of default."
+      "mitigation": "Obtain written representations confirming the applicability and enforceability of each Event of Default condition."
     }
   ],
-  "executive_summary": "The loan agreement contains several material gaps and ambiguities that elevate financial, legal, operational, and compliance risks. Notably, the working capital covenant uses vague \"commercially reasonable efforts\" without a measurable standard, and key terms such as collateral appraisal value, change of control definition, interest day count, amortization schedule, and post\u201124\u2011month prepayment premium are absent. Additionally, multiple automated policy checks failed, indicating potential undiscovered compliance issues. These deficiencies could impede covenant monitoring, affect loan security valuation, and increase default risk. Immediate clarification and amendment of the identified gaps are required before proceeding.",
+  "executive_summary": "The loan agreement presents several material risks: the permitted Loan-to-Value ratio of 82% exceeds the institution's 75% policy limit, creating a high financial exposure; the agreement omits the exact signing date, preventing precise calculation of the 84\u2011month maturity and potentially affecting schedule management; the fiscal quarter\u2011end and year\u2011end dates are not specified, hindering timely financial reporting and covenant testing; and several Event of Default conditions are listed without verification, raising legal enforceability concerns. These gaps, combined with the covenant structure, warrant immediate clarification and possible renegotiation.",
   "follow_up_actions": [
-    "Obtain an independent appraisal of the manufacturing facility to confirm the collateral value and assess compliance with the 82% LTV covenant.",
-    "Define \"Change of Control\" in the agreement to provide a clear legal trigger for default.",
-    "Specify the interest calculation day count convention (e.g., 30/360 or actual/365).",
-    "Provide a detailed amortization schedule outlining principal and interest payments over the 84\u2011month term.",
-    "Clarify the prepayment premium applicable after the first 24 months, or confirm that no premium applies.",
-    "Add a covenant compliance certification requirement, including frequency (e.g., quarterly) and format.",
-    "List all conditions precedent to loan funding, such as board approvals, insurance, and legal opinions.",
-    "Revise the working capital covenant to include an objective, measurable standard (e.g., minimum cash balance).",
-    "Review and resolve the findings from policy checks POL-01, POL-02, POL-03, POL-04, and POL-05 with the compliance team.",
-    "Document any exclusions to events of default to avoid ambiguity in enforcement."
+    "Obtain the exact date of the Agreement to calculate the precise loan maturity date.",
+    "Request the Borrower's fiscal quarter\u2011end and fiscal year\u2011end dates to confirm reporting deadlines.",
+    "Negotiate a reduction of the LTV ratio to the policy maximum of 75% or secure additional collateral to mitigate the excess LTV risk.",
+    "Confirm and document the definitions and verification status of all Event of Default conditions, especially material misrepresentation, insolvency, and change of control.",
+    "Review the covenant monitoring process to ensure quarterly testing aligns with the clarified reporting calendar."
   ],
   "escalations": [
-    "Compliance rule 'POL-01' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Compliance rule 'POL-02' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Compliance rule 'POL-03' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Compliance rule 'POL-04' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Compliance rule 'POL-05' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Compliance rule 'POL-13' needs human review: The agreement does not contain any provision that states how frequently the borrower must certify compliance with the financial covenants.",
-    "Critical risk: Missing Collateral Appraisal Value",
-    "Critical risk: Policy Check Failures (POL-01 to POL-05)",
-    "Missing/ambiguous information: Exact maturity date (calendar date) not specified",
-    "Missing/ambiguous information: Prepayment premium after the first 24 months not specified",
-    "Missing/ambiguous information: Definition of \"Change of Control\" not provided",
-    "Missing/ambiguous information: Appraised value of the collateral not disclosed",
-    "Missing/ambiguous information: Interest calculation day count convention not stated",
-    "Missing/ambiguous information: Amortization schedule not included",
-    "Missing/ambiguous information: Conditions precedent to loan funding not listed",
-    "Missing/ambiguous information: Exclusions (e.g., events not constituting default) not identified"
+    "Unverified evidence for term 'Event of Default: Breach of Financial Covenant' (cites clause 8.1, quote not found in source document).",
+    "Unverified evidence for term 'Event of Default: Material Misrepresentation' (cites clause 8.1, quote not found in source document).",
+    "Unverified evidence for term 'Event of Default: Insolvency or Bankruptcy' (cites clause 8.1, quote not found in source document).",
+    "Unverified evidence for term 'Event of Default: Change of Control' (cites clause 8.1, quote not found in source document).",
+    "Compliance rule 'POL-03' FAILED (high): Maximum Loan-to-Value (LTV) ratio is 75%.",
+    "Compliance rule 'POL-13' needs human review: The document specifies the frequency for testing financial covenants (quarterly) and for delivering financial statements (quarterly and annually), which are used to assess compliance. However, it does not explicitly state how often the borrower must *certify* covenant compliance.",
+    "Missing/ambiguous information: The exact 'date of this Agreement' is not specified, preventing calculation of the precise maturity date.",
+    "Missing/ambiguous information: The specific fiscal quarter end and fiscal year end dates for the Borrower are not provided."
   ],
   "overall_status": "human_review",
-  "errors": [
-    "compliance_batch_failed (['POL-01', 'POL-02', 'POL-03', 'POL-04', 'POL-05']): Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7873, Requested 4777. Please try again in 34.875s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
-  ],
+  "errors": [],
   "retry_count": 0
 }

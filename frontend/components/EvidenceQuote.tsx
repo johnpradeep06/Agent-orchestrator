@@ -8,14 +8,14 @@ export default function EvidenceQuote({ evidence }: { evidence: Evidence }) {
     <button
       type="button"
       onClick={() => setOpen(!open)}
-      className={`block w-full text-left rounded-md border px-2.5 py-1.5 text-xs transition-colors ${
+      className={`block w-full text-left rounded-lg border px-3 py-2 text-xs transition-all ${
         evidence.verified
-          ? "border-border bg-white hover:border-accent/40"
-          : "border-fail/30 bg-fail/5 hover:border-fail/50"
+          ? "border-border bg-surface2 hover:border-accent/50 hover:shadow-glow-accent"
+          : "border-fail/40 bg-fail/5 hover:shadow-glow-fail"
       }`}
     >
       <div className="flex items-center justify-between gap-2">
-        <span className="font-mono text-muted">
+        <span className="font-mono text-dim">
           Clause {evidence.clause_id}
           {evidence.page ? ` · p.${evidence.page}` : ""}
         </span>
@@ -23,8 +23,8 @@ export default function EvidenceQuote({ evidence }: { evidence: Evidence }) {
           {evidence.verified ? "✓ verified" : "✗ unverified"}
         </span>
       </div>
-      {open && <p className="mt-1.5 italic text-ink/80">&ldquo;{evidence.quote}&rdquo;</p>}
-      {!open && <p className="mt-1 truncate italic text-ink/60">&ldquo;{evidence.quote}&rdquo;</p>}
+      {open && <p className="mt-1.5 italic text-ink/85">&ldquo;{evidence.quote}&rdquo;</p>}
+      {!open && <p className="mt-1 truncate italic text-muted">&ldquo;{evidence.quote}&rdquo;</p>}
     </button>
   );
 }
