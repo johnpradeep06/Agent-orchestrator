@@ -3,12 +3,18 @@ include a verbatim quote copied exactly from that clause's text (do not paraphra
 If the document does not clearly support a claim, do not invent one — put it in the gaps/missing-information
 list instead. Never fabricate a clause_id that isn't in the list."""
 
+TOOL_ONLY_RULE = """Respond ONLY by calling the provided function with structured arguments. Do not write
+a markdown table, prose explanation, or any other free-text answer — the function call is the entire
+response. gaps must be a list of plain strings, not objects."""
+
 
 def extraction_prompt(clause_index: dict[str, str]) -> str:
     clauses = "\n\n".join(f"[{cid}]\n{text}" for cid, text in clause_index.items())
     return f"""You are a Term Extraction Agent reviewing a financial deal document.
 
 {GROUNDING_RULE}
+
+{TOOL_ONLY_RULE}
 
 Extract every material term: parties, monetary value, dates, interest/rates, obligations, covenants,
 collateral, exclusions, and conditions. For anything the document should specify but doesn't
@@ -24,6 +30,8 @@ def compliance_prompt(rules_text: str, terms_text: str, clause_index: dict[str, 
     return f"""You are a Compliance Review Agent. Check the extracted deal terms against this batch of policy rules.
 
 {GROUNDING_RULE}
+
+{TOOL_ONLY_RULE}
 
 For each rule return status pass, fail, or needs_human_review. Use needs_human_review whenever the
 document doesn't contain enough information to conclusively evaluate the rule — that is a valid,
@@ -44,6 +52,8 @@ def risk_prompt(terms_text: str, compliance_text: str, gaps_text: str) -> str:
     return f"""You are a Risk & Summary Agent for a financial deal review.
 
 {GROUNDING_RULE}
+
+{TOOL_ONLY_RULE}
 
 Given the extracted terms and compliance results below, identify and prioritize financial, legal,
 operational, and compliance risks. Weigh missing/ambiguous information as risk factors too. Then write

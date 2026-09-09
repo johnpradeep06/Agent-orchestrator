@@ -2,7 +2,7 @@
 import operator
 from typing import Annotated, Literal, TypedDict
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class Evidence(BaseModel):
@@ -54,6 +54,27 @@ class TermList(BaseModel):
     """Structured-output wrapper for the extraction agent."""
     terms: list[Term]
     gaps: list[str] = Field(default_factory=list, description="Material info the document should contain but doesn't")
+
+    @field_validator("gaps", mode="before")
+    @classmethod
+    def _coerce_gap_strings(cls, v):
+        # Some models nest a gap as {"name": ..., "gaps": [...], ...} instead of a plain string
+        # despite the schema. Flatten rather than fail the whole extraction over one field.
+        if not isinstance(v, list):
+            return v
+        out = []
+        for item in v:
+            if isinstance(item, str):
+                out.append(item)
+            elif isinstance(item, dict):
+                nested = item.get("gaps")
+                if isinstance(nested, list):
+                    out.extend(str(n) for n in nested)
+                else:
+                    out.append(item.get("name") or item.get("description") or str(item))
+            else:
+                out.append(str(item))
+        return out
 
 
 class RuleBatchResult(BaseModel):
