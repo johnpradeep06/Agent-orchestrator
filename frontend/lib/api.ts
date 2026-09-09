@@ -1,4 +1,10 @@
-export const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+// NEXT_PUBLIC_API_BASE (set in Vercel project settings) always wins. Without it, default to
+// the deployed Railway backend unless we're actually running on localhost.
+const PROD_API_BASE = "https://backend-production-0fd49.up.railway.app";
+
+export const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE ||
+  (typeof window !== "undefined" && window.location.hostname !== "localhost" ? PROD_API_BASE : "http://localhost:8000");
 
 export async function submitRun(file: File, rulesFile: File | null): Promise<string> {
   const form = new FormData();
