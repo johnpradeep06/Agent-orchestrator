@@ -1,7 +1,8 @@
 "use client";
 import { useCallback, useRef, useState } from "react";
+import HomePage from "@/components/HomePage";
 import UploadForm from "@/components/UploadForm";
-import Timeline from "@/components/Timeline";
+import AgentGraph from "@/components/AgentGraph";
 import ReportView from "@/components/ReportView";
 import { API_BASE, fetchRun, submitRun } from "@/lib/api";
 import type { DealResult, StageState, StreamEvent } from "@/lib/types";
@@ -12,10 +13,10 @@ function initialStages(): StageState[] {
   return STAGE_ORDER.map((name) => ({ name, status: "pending", warnings: [] }));
 }
 
-type ViewState = "empty" | "processing" | "completed" | "run_error";
+type ViewState = "home" | "upload" | "processing" | "completed" | "run_error";
 
 export default function Home() {
-  const [view, setView] = useState<ViewState>("empty");
+  const [view, setView] = useState<ViewState>("home");
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [stages, setStages] = useState<StageState[]>(initialStages());
@@ -98,7 +99,7 @@ export default function Home() {
 
   function reset() {
     esRef.current?.close();
-    setView("empty");
+    setView("home");
     setResult(null);
     setRunId(null);
     setFatalError(null);
@@ -107,50 +108,60 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      <header className="border-b border-border bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
-          <span className="text-sm font-semibold tracking-tight">Deal Review — AI Analyst</span>
-          {view !== "empty" && (
-            <button onClick={reset} className="text-xs font-medium text-muted hover:text-ink">
+      <header className="sticky top-0 z-20 border-b border-border bg-bg/80 backdrop-blur">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3.5">
+          <button
+            onClick={reset}
+            className="flex items-center gap-2 text-sm font-semibold tracking-tight text-ink transition-colors hover:text-accent2"
+          >
+            <span className="h-2 w-2 rounded-full bg-accent shadow-glow-accent" />
+            Deal Review — AI Analyst
+          </button>
+          {view !== "home" && (
+            <button onClick={reset} className="text-xs font-medium text-muted transition-colors hover:text-ink">
               New review
             </button>
           )}
         </div>
       </header>
 
-      <div className="px-6 py-12">
-        {view === "empty" && <UploadForm onSubmit={handleSubmit} submitting={submitting} errorMessage={submitError} />}
+      {view === "home" && <HomePage onGetStarted={() => setView("upload")} />}
 
-        {(view === "processing" || view === "run_error") && (
-          <div className="space-y-4">
-            <p className="text-center text-xs font-medium uppercase tracking-wide text-muted">
-              {view === "run_error" ? "Pipeline error" : "Processing"}
+      {view === "upload" && (
+        <div className="px-6 py-16">
+          <UploadForm onSubmit={handleSubmit} submitting={submitting} errorMessage={submitError} />
+        </div>
+      )}
+
+      {(view === "processing" || view === "run_error") && (
+        <div className="space-y-6 px-6 py-16">
+          <p className="text-center text-xs font-medium uppercase tracking-wide text-muted">
+            {view === "run_error" ? "Pipeline error" : "Processing"}
+          </p>
+          <AgentGraph stages={stages} />
+          {fatalError && (
+            <p className="mx-auto max-w-2xl rounded-xl border border-fail/40 bg-fail/10 px-4 py-3 text-center text-sm text-fail">
+              {fatalError}
             </p>
-            <Timeline stages={stages} />
-            {fatalError && (
-              <p className="mx-auto max-w-2xl rounded-lg border border-fail/30 bg-fail/5 px-4 py-3 text-center text-sm text-fail">
-                {fatalError}
-              </p>
-            )}
-          </div>
-        )}
+          )}
+        </div>
+      )}
 
-        {view === "completed" && result && (
-          <div className="space-y-6">
-            {showTrace && (
-              <div className="space-y-2">
-                <Timeline stages={stages} />
-                <p className="text-center">
-                  <button onClick={() => setShowTrace(false)} className="text-xs font-medium text-accent hover:underline">
-                    Hide activity trace
-                  </button>
-                </p>
-              </div>
-            )}
-            <ReportView result={result} onShowTrace={() => setShowTrace(true)} />
-          </div>
-        )}
-      </div>
+      {view === "completed" && result && (
+        <div className="space-y-6 py-10">
+          {showTrace && (
+            <div className="space-y-2 px-6">
+              <AgentGraph stages={stages} />
+              <p className="text-center">
+                <button onClick={() => setShowTrace(false)} className="text-xs font-medium text-accent2 hover:underline">
+                  Hide activity trace
+                </button>
+              </p>
+            </div>
+          )}
+          <ReportView result={result} onShowTrace={() => setShowTrace(true)} />
+        </div>
+      )}
     </main>
   );
 }
