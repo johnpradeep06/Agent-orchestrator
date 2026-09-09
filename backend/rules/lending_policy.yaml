@@ -1,0 +1,78 @@
+# Synthetic commercial lending policy used to validate the pipeline.
+# Deliberately mixed: some rules the normal case passes, some it fails,
+# and some are unresolvable from the document text alone (-> needs_human_review).
+
+- id: POL-01
+  description: "Loan principal must not exceed the delegated authority limit of $5,000,000."
+  check: "Extracted principal/loan amount <= 5,000,000 USD (or currency-equivalent)."
+  severity: high
+
+- id: POL-02
+  description: "Minimum Debt Service Coverage Ratio (DSCR) of 1.25x is required."
+  check: "Extracted DSCR covenant >= 1.25x."
+  severity: critical
+
+- id: POL-03
+  description: "Maximum Loan-to-Value (LTV) ratio is 75%."
+  check: "Extracted LTV <= 75%."
+  severity: high
+
+- id: POL-04
+  description: "Maximum leverage (Debt/EBITDA) covenant must not exceed 3.5x."
+  check: "Extracted leverage covenant <= 3.5x."
+  severity: high
+
+- id: POL-05
+  description: "Interest rate structure (fixed or floating) must be unambiguous and internally consistent."
+  check: "The document must not state conflicting rate types or values across clauses."
+  severity: critical
+
+- id: POL-06
+  description: "Collateral must be explicitly identified and sufficiently described (asset type, location/identifier)."
+  check: "A collateral clause exists and names a specific, identifiable asset."
+  severity: high
+
+- id: POL-07
+  description: "Borrower and lender parties must be fully and unambiguously identified."
+  check: "Both parties are named with legal entity form (e.g. Inc., LLC, Ltd)."
+  severity: medium
+
+- id: POL-08
+  description: "Loan maturity/term must be explicitly stated."
+  check: "A maturity date or term length is present."
+  severity: medium
+
+- id: POL-09
+  description: "Financial reporting obligations must be specified (frequency and type of reports)."
+  check: "The document specifies periodic financial reporting requirements."
+  severity: medium
+
+- id: POL-10
+  description: "Events of default must be enumerated."
+  check: "The document lists specific events that constitute default."
+  severity: medium
+
+- id: POL-11
+  description: "Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set."
+  check: "No dangling references to schedules/exhibits that are missing from the provided document."
+  severity: medium
+
+- id: POL-12
+  description: "Prepayment terms must be defined (permitted or restricted, and any penalty)."
+  check: "The document addresses whether prepayment is allowed and on what terms."
+  severity: low
+
+- id: POL-13
+  description: "Covenant compliance certification frequency must be specified."
+  check: "The document states how often the borrower must certify covenant compliance."
+  severity: low
+
+- id: POL-14
+  description: "Governing law and jurisdiction must be specified."
+  check: "A governing law clause is present."
+  severity: low
+
+- id: POL-15
+  description: "Any 'reasonable efforts' / 'commercially reasonable' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards."
+  check: "Vague effort-based covenants must be paired with a measurable threshold."
+  severity: medium
