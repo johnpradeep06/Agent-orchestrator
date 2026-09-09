@@ -43,18 +43,22 @@ def extract_terms_node(state: DealState) -> dict:
 
 
 def retry_extraction_node(state: DealState) -> dict:
-    failed = [t for t in state["terms"] if not t.evidence.verified]
-    failed_desc = "\n".join(
-        f"- {t.name}: cited clause {t.evidence.clause_id}, quote \"{t.evidence.quote}\" "
-        "was NOT found verbatim in that clause"
-        for t in failed
-    )
+    failed = [t for t in state.get("terms", []) if not t.evidence.verified]
     llm = get_llm().with_structured_output(TermList)
-    prompt = (
-        extraction_prompt(state["clause_index"])
-        + "\n\nYour previous attempt cited quotes that do not appear verbatim in the cited clause. "
-        f"Correct these specifically, copying exact text from the clause:\n{failed_desc}"
-    )
+    if failed:
+        failed_desc = "\n".join(
+            f"- {t.name}: cited clause {t.evidence.clause_id}, quote \"{t.evidence.quote}\" "
+            "was NOT found verbatim in that clause"
+            for t in failed
+        )
+        prompt = (
+            extraction_prompt(state["clause_index"])
+            + "\n\nYour previous attempt cited quotes that do not appear verbatim in the cited clause. "
+            f"Correct these specifically, copying exact text from the clause:\n{failed_desc}"
+        )
+    else:
+        # Hard failure (API/parse error) rather than a verification miss — just retry cleanly.
+        prompt = extraction_prompt(state["clause_index"])
     try:
         result: TermList = llm.invoke(prompt)
     except Exception as e:
@@ -85,8 +89,17 @@ def _route_to_compliance(state: DealState):
     ]
 
 
+def _extraction_hard_failed(state: DealState) -> bool:
+    # extract_terms_node caught an exception (API error, truncated/unparseable JSON, etc.) and
+    # returned no terms at all — distinct from "the document legitimately has few/no terms".
+    return not state.get("terms") and any("extraction_failed" in e for e in state.get("errors", []))
+
+
 def route_after_extraction(state: DealState):
-    if needs_extraction_retry(state.get("terms", [])) and state.get("retry_count", 0) < MAX_EXTRACTION_RETRIES:
+    should_retry = (
+        needs_extraction_retry(state.get("terms", [])) or _extraction_hard_failed(state)
+    ) and state.get("retry_count", 0) < MAX_EXTRACTION_RETRIES
+    if should_retry:
         return "retry_extraction"
     return _route_to_compliance(state)
 

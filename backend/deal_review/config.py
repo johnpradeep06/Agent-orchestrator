@@ -24,7 +24,9 @@ def get_llm(temperature: float = 0.0):
     model = LLM_MODEL or _DEFAULT_MODELS[provider]
 
     if provider == "groq":
-        return ChatGroq(model=model, temperature=temperature, api_key=os.environ["GROQ_API_KEY"])
+        # Structured-output responses (terms + evidence quotes for a full document) can be long;
+        # Groq's tool-call JSON gets truncated (and fails to parse) on the default token budget.
+        return ChatGroq(model=model, temperature=temperature, max_tokens=8000, api_key=os.environ["GROQ_API_KEY"])
     if provider == "openrouter":
         return ChatOpenAI(
             model=model,
