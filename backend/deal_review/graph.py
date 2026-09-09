@@ -20,7 +20,7 @@ LLM_RETRY = RetryPolicy(max_attempts=3, initial_interval=1.0, backoff_factor=2.0
 # than they'll use and starve the shared budget.
 EXTRACTION_MAX_TOKENS = 5000
 COMPLIANCE_MAX_TOKENS = 2800
-RISK_MAX_TOKENS = 2200
+RISK_MAX_TOKENS = 3200
 
 
 def _make_rule_batches(rules: list[Rule]) -> list[list[Rule]]:

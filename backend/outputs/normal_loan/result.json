@@ -163,7 +163,7 @@
     },
     {
       "name": "Interest Rate",
-      "value": "7.25% per annum (fixed)",
+      "value": "7.25% per annum",
       "category": "rate",
       "evidence": {
         "clause_id": "3.1",
@@ -175,7 +175,7 @@
       "confidence": 0.8
     },
     {
-      "name": "Maturity",
+      "name": "Maturity Period",
       "value": "84 months from the date of this Agreement",
       "category": "date",
       "evidence": {
@@ -188,7 +188,7 @@
       "confidence": 0.8
     },
     {
-      "name": "Minimum DSCR",
+      "name": "Minimum Debt Service Coverage Ratio (DSCR)",
       "value": "1.30x",
       "category": "covenant",
       "evidence": {
@@ -201,7 +201,7 @@
       "confidence": 0.8
     },
     {
-      "name": "Maximum LTV",
+      "name": "Maximum Loan-to-Value (LTV) Ratio",
       "value": "82%",
       "category": "covenant",
       "evidence": {
@@ -214,7 +214,7 @@
       "confidence": 0.8
     },
     {
-      "name": "Maximum Leverage Ratio",
+      "name": "Maximum Leverage Ratio (Total Debt / EBITDA)",
       "value": "3.2x",
       "category": "covenant",
       "evidence": {
@@ -227,9 +227,9 @@
       "confidence": 0.8
     },
     {
-      "name": "Working Capital Reserve Obligation",
-      "value": "Use commercially reasonable efforts to maintain adequate working capital reserves throughout the term",
-      "category": "covenant",
+      "name": "Working Capital Reserves",
+      "value": "maintain adequate working capital reserves throughout the term of this Agreement",
+      "category": "obligation",
       "evidence": {
         "clause_id": "5.4",
         "quote": "Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves throughout the term of this Agreement.",
@@ -240,34 +240,8 @@
       "confidence": 0.8
     },
     {
-      "name": "Collateral Description",
-      "value": "First\u2011priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744",
-      "category": "collateral",
-      "evidence": {
-        "clause_id": "6.1",
-        "quote": "As security for the Loan, Borrower grants Lender a first\u2011priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
-        "page": null,
-        "verified": true,
-        "verification_method": "fuzzy"
-      },
-      "confidence": 0.8
-    },
-    {
-      "name": "Collateral Details",
-      "value": "Manufacturing facility, approx. 62,000 sq ft on a 4.1\u2011acre parcel, with fixtures and equipment",
-      "category": "collateral",
-      "evidence": {
-        "clause_id": "11.1",
-        "quote": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
-        "page": null,
-        "verified": true,
-        "verification_method": "exact"
-      },
-      "confidence": 0.8
-    },
-    {
-      "name": "Quarterly Financial Reporting",
-      "value": "Deliver unaudited financial statements within 45 days of each fiscal quarter end",
+      "name": "Quarterly Financial Statements Delivery",
+      "value": "within 45 days of each fiscal quarter end",
       "category": "obligation",
       "evidence": {
         "clause_id": "7.1",
@@ -279,8 +253,8 @@
       "confidence": 0.8
     },
     {
-      "name": "Annual Financial Reporting",
-      "value": "Deliver audited financial statements within 120 days of each fiscal year end",
+      "name": "Annual Audited Financial Statements Delivery",
+      "value": "within 120 days of each fiscal year end",
       "category": "obligation",
       "evidence": {
         "clause_id": "7.1",
@@ -292,21 +266,8 @@
       "confidence": 0.8
     },
     {
-      "name": "Events of Default",
-      "value": "Failure to pay, breach of covenants, misrepresentation, insolvency, change of control without consent",
-      "category": "condition",
-      "evidence": {
-        "clause_id": "8.1",
-        "quote": "Each of the following constitutes an Event of Default under this Agreement: (a) failure to pay any principal or interest when due; (b) breach of any financial covenant in Section 5; (c) any material misrepresentation by Borrower; (d) insolvency or bankruptcy filing by Borrower; (e) a change of control of Borrower without Lender's prior written consent.",
-        "page": null,
-        "verified": true,
-        "verification_method": "exact"
-      },
-      "confidence": 0.8
-    },
-    {
-      "name": "Prepayment Notice",
-      "value": "Borrower may prepay with 30 days' written notice",
+      "name": "Prepayment Notice Period",
+      "value": "30 days' written notice",
       "category": "condition",
       "evidence": {
         "clause_id": "9.1",
@@ -319,8 +280,8 @@
     },
     {
       "name": "Prepayment Premium",
-      "value": "2% of amount prepaid if within first 24 months",
-      "category": "rate",
+      "value": "2% of the amount prepaid if prepayment occurs within the first 24 months",
+      "category": "condition",
       "evidence": {
         "clause_id": "9.1",
         "quote": "Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
@@ -331,12 +292,38 @@
       "confidence": 0.8
     },
     {
-      "name": "Governing Law",
-      "value": "State of New York",
-      "category": "other",
+      "name": "Events of Default",
+      "value": "failure to pay any principal or interest when due; breach of any financial covenant in Section 5; any material misrepresentation by Borrower; insolvency or bankruptcy filing by Borrower; a change of control of Borrower without Lender's prior written consent",
+      "category": "condition",
       "evidence": {
-        "clause_id": "10.1",
-        "quote": "This Agreement shall be governed by and construed in accordance with the laws of the State of New York.",
+        "clause_id": "8.1",
+        "quote": "Each of the following constitutes an Event of Default under this Agreement:\n(a) failure to pay any principal or interest when due;\n(b) breach of any financial covenant in Section 5;\n(c) any material misrepresentation by Borrower;\n(d) insolvency or bankruptcy filing by Borrower;\n(e) a change of control of Borrower without Lender's prior written consent.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Collateral Security Interest",
+      "value": "first\u2011priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744",
+      "category": "collateral",
+      "evidence": {
+        "clause_id": "6.1",
+        "quote": "As security for the Loan, Borrower grants Lender a first-priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Collateral Description",
+      "value": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1\u2011acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
+      "category": "collateral",
+      "evidence": {
+        "clause_id": "11.1",
+        "quote": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
@@ -345,95 +332,55 @@
     }
   ],
   "extraction_gaps": [
-    "Exact calendar maturity date not specified",
-    "Amortization schedule not provided"
+    "Specific calendar maturity date not provided.",
+    "Exclusions not specified."
   ],
   "rule_results": [
     {
       "rule_id": "POL-01",
       "rule_description": "Loan principal must not exceed the delegated authority limit of $5,000,000.",
-      "status": "pass",
-      "rationale": "Loan amount $4,200,000 is less than or equal to the $5,000,000 limit.",
-      "evidence": [
-        {
-          "clause_id": "2.1",
-          "quote": "2.1 The Lender agrees to extend a term loan to the Borrower in the principal amount of $4,200,000 (the \"Loan\").",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
       "severity": "high"
     },
     {
       "rule_id": "POL-02",
       "rule_description": "Minimum Debt Service Coverage Ratio (DSCR) of 1.25x is required.",
-      "status": "pass",
-      "rationale": "Minimum DSCR of 1.30x meets the required 1.25x threshold.",
-      "evidence": [
-        {
-          "clause_id": "5.1",
-          "quote": "5.1 Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, tested quarterly based on trailing twelve-month financials.",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
       "severity": "critical"
     },
     {
       "rule_id": "POL-03",
       "rule_description": "Maximum Loan-to-Value (LTV) ratio is 75%.",
-      "status": "fail",
-      "rationale": "Maximum LTV of 82% exceeds the allowed 75% limit.",
-      "evidence": [
-        {
-          "clause_id": "5.2",
-          "quote": "5.2 Borrower shall maintain a maximum Loan-to-Value (LTV) ratio of 82%, based on the most recent appraisal of the Collateral.",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
       "severity": "high"
     },
     {
       "rule_id": "POL-04",
       "rule_description": "Maximum leverage (Debt/EBITDA) covenant must not exceed 3.5x.",
-      "status": "pass",
-      "rationale": "Leverage ratio of 3.2x is within the 3.5x maximum.",
-      "evidence": [
-        {
-          "clause_id": "5.3",
-          "quote": "5.3 Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, tested quarterly.",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
       "severity": "high"
     },
     {
       "rule_id": "POL-05",
       "rule_description": "Interest rate structure (fixed or floating) must be unambiguous and internally consistent.",
-      "status": "pass",
-      "rationale": "Interest rate is clearly stated as a fixed 7.25% with no conflicting statements.",
-      "evidence": [
-        {
-          "clause_id": "3.1",
-          "quote": "3.1 The Loan shall bear interest at a fixed rate of 7.25% per annum, calculated on the outstanding principal balance, payable monthly in arrears.",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
       "severity": "critical"
     },
     {
       "rule_id": "POL-06",
       "rule_description": "Collateral must be explicitly identified and sufficiently described (asset type, location/identifier). \u2014 check: A collateral clause exists and names a specific, identifiable asset.",
       "status": "pass",
-      "rationale": "The agreement includes a collateral clause that identifies a specific manufacturing facility with address and detailed description of size and equipment.",
+      "rationale": "Clause 6.1 identifies a first\u2011priority lien on a specific manufacturing facility and Clause 11.1 provides a detailed description of the facility, satisfying the requirement for explicit identification and sufficient description of the collateral.",
       "evidence": [
         {
           "clause_id": "6.1",
@@ -456,7 +403,7 @@
       "rule_id": "POL-07",
       "rule_description": "Borrower and lender parties must be fully and unambiguously identified. \u2014 check: Both parties are named with legal entity form (e.g. Inc., LLC, Ltd).",
       "status": "pass",
-      "rationale": "Both Borrower and Lender are named with their full legal entity designations in the Parties clause.",
+      "rationale": "Clause 1 names both parties with their full legal entity designations (Meridian Manufacturing LLC and Highland Capital Bank, N.A.).",
       "evidence": [
         {
           "clause_id": "1",
@@ -472,7 +419,7 @@
       "rule_id": "POL-08",
       "rule_description": "Loan maturity/term must be explicitly stated. \u2014 check: A maturity date or term length is present.",
       "status": "pass",
-      "rationale": "The Maturity clause specifies a term of 84 months from the agreement date.",
+      "rationale": "Clause 4.1 states the loan will mature 84 months from the agreement date, providing a clear term.",
       "evidence": [
         {
           "clause_id": "4.1",
@@ -488,7 +435,7 @@
       "rule_id": "POL-09",
       "rule_description": "Financial reporting obligations must be specified (frequency and type of reports). \u2014 check: The document specifies periodic financial reporting requirements.",
       "status": "pass",
-      "rationale": "The Reporting Obligations clause details quarterly unaudited and annual audited financial statement delivery timelines.",
+      "rationale": "Clause 7.1 requires quarterly unaudited financial statements within 45 days of quarter\u2011end and annual audited statements within 120 days of fiscal year\u2011end.",
       "evidence": [
         {
           "clause_id": "7.1",
@@ -504,11 +451,11 @@
       "rule_id": "POL-10",
       "rule_description": "Events of default must be enumerated. \u2014 check: The document lists specific events that constitute default.",
       "status": "pass",
-      "rationale": "The Events of Default clause enumerates five specific default events.",
+      "rationale": "Clause 8.1 enumerates five distinct events that constitute an Event of Default.",
       "evidence": [
         {
           "clause_id": "8.1",
-          "quote": "Each of the following constitutes an Event of Default under this Agreement: (a) failure to pay any principal or interest when due; (b) breach of any financial covenant in Section 5; (c) any material misrepresentation by Borrower; (d) insolvency or bankruptcy filing by Borrower; (e) a change of control of Borrower without Lender's prior written consent.",
+          "quote": "Each of the following constitutes an Event of Default under this Agreement:\n(a) failure to pay any principal or interest when due;\n(b) breach of any financial covenant in Section 5;\n(c) any material misrepresentation by Borrower;\n(d) insolvency or bankruptcy filing by Borrower;\n(e) a change of control of Borrower without Lender's prior written consent.",
           "page": null,
           "verified": true,
           "verification_method": "exact"
@@ -518,42 +465,81 @@
     },
     {
       "rule_id": "POL-11",
-      "rule_description": "Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
-      "evidence": [],
+      "rule_description": "Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.",
+      "status": "pass",
+      "rationale": "The agreement references Schedule A and Schedule A is included as clause 11.1, so no missing schedule.",
+      "evidence": [
+        {
+          "clause_id": "6.1",
+          "quote": "6.1 As security for the Loan, Borrower grants Lender a first\u2011priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
+          "page": null,
+          "verified": true,
+          "verification_method": "fuzzy"
+        },
+        {
+          "clause_id": "11.1",
+          "quote": "11.1 Manufacturing facility, approximately 62,000 square feet, situated on a 4.1\u2011acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
+          "page": null,
+          "verified": true,
+          "verification_method": "fuzzy"
+        }
+      ],
       "severity": "medium"
     },
     {
       "rule_id": "POL-12",
-      "rule_description": "Prepayment terms must be defined (permitted or restricted, and any penalty).",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
-      "evidence": [],
+      "rule_description": "Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.",
+      "status": "pass",
+      "rationale": "Clause 9.1 explicitly defines the ability to prepay, the notice period, and the premium.",
+      "evidence": [
+        {
+          "clause_id": "9.1",
+          "quote": "9.1 Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "low"
     },
     {
       "rule_id": "POL-13",
-      "rule_description": "Covenant compliance certification frequency must be specified.",
+      "rule_description": "Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.",
       "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
+      "rationale": "The agreement includes financial covenant thresholds but does not specify how frequently the borrower must certify compliance with those covenants.",
       "evidence": [],
       "severity": "low"
     },
     {
       "rule_id": "POL-14",
-      "rule_description": "Governing law and jurisdiction must be specified.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
-      "evidence": [],
+      "rule_description": "Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.",
+      "status": "pass",
+      "rationale": "Clause 10.1 provides the governing law.",
+      "evidence": [
+        {
+          "clause_id": "10.1",
+          "quote": "10.1 This Agreement shall be governed by and construed in accordance with the laws of the State of New York.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "low"
     },
     {
       "rule_id": "POL-15",
-      "rule_description": "Any 'reasonable efforts' / 'commercially reasonable' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
-      "evidence": [],
+      "rule_description": "Any 'reasonable efforts' / 'commercially reasonable' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.",
+      "status": "fail",
+      "rationale": "Clause 5.4 uses \"commercially reasonable efforts\" without attaching an objective, measurable standard.",
+      "evidence": [
+        {
+          "clause_id": "5.4",
+          "quote": "5.4 Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves throughout the term of this Agreement.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "medium"
     }
   ],
@@ -563,19 +549,19 @@
     "Manually review this deal \u2014 automated risk analysis did not complete."
   ],
   "escalations": [
-    "Compliance rule 'POL-03' FAILED (high): Maximum Loan-to-Value (LTV) ratio is 75%.",
-    "Compliance rule 'POL-11' needs human review: Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
-    "Compliance rule 'POL-12' needs human review: Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
-    "Compliance rule 'POL-13' needs human review: Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
-    "Compliance rule 'POL-14' needs human review: Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
-    "Compliance rule 'POL-15' needs human review: Automated compliance check failed due to a system error (Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}); review manually.",
-    "Missing/ambiguous information: Exact calendar maturity date not specified",
-    "Missing/ambiguous information: Amortization schedule not provided"
+    "Compliance rule 'POL-01' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-02' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-03' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-04' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-05' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-13' needs human review: The agreement includes financial covenant thresholds but does not specify how frequently the borrower must certify compliance with those covenants.",
+    "Missing/ambiguous information: Specific calendar maturity date not provided.",
+    "Missing/ambiguous information: Exclusions not specified."
   ],
   "overall_status": "human_review",
   "errors": [
-    "compliance_batch_failed (['POL-11', 'POL-12', 'POL-13', 'POL-14', 'POL-15']): Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RuleBatchResult\", \"arguments\": {\\n  \"results\": [\\n    {\\n      \"rule_id\": \"POL-11\",\\n      \"rule_description\": \"Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"6.1\",\\n          \"quote\": \"as more particularly described in Schedule A.\"\\n        },\\n        {\\n          \"clause_id\": \"11\",\\n          \"quote\": \"Schedule A \u2014 Collateral Description\"\\n        }\\n      ],\\n      \"rationale\": \"Schedule A is referenced in clause 6.1 and the Schedule A document is present as clause 11.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-12\",\\n      \"rule_description\": \"Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"9.1\",\\n          \"quote\": \"Borrower may prepay the Loan in whole or in part at any time upon 30 days\\' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\"\\n        }\\n      ],\\n      \"rationale\": \"Prepayment is permitted with 30 days notice and a 2% premium within first 24 months.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-13\",\\n      \"rule_description\": \"Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.\",\\n      \"severity\": \"low\",\\n      \"status\": \"needs_human_review\",\\n      \"evidence\": [],\\n      \"rationale\": \"The document does not specify the frequency of covenant compliance certification.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-14\",\\n      \"rule_description\": \"Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.\",\\n      \"severity\": \"low\",\\n      \"status\": \"pass\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"10.1\",\\n          \"quote\": \"This Agreement shall be governed by and construed in accordance with the laws of the State of New York.\"\\n        }\\n      ],\\n      \"rationale\": \"Governing law clause present.\"\\n    },\\n    {\\n      \"rule_id\": \"POL-15\",\\n      \"rule_description\": \"Any \\'reasonable efforts\\' / \\'commercially reasonable\\' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.\",\\n      \"severity\": \"medium\",\\n      \"status\": \"fail\",\\n     \"}'}}",
-    "risk_summary_failed: Error code: 413 - {'error': {'message': 'Request too large for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Requested 8264, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    "compliance_batch_failed (['POL-01', 'POL-02', 'POL-03', 'POL-04', 'POL-05']): Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 4376, Requested 4740. Please try again in 8.37s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "risk_summary_failed: Error code: 400 - {'error': {'message': 'Failed to parse tool call arguments as JSON', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"RiskSummary\", \"arguments\": {\\n  \"executive_summary\": \"The loan agreement contains robust financial terms but presents several material risks, notably the lack of defined measurement for working capital reserves and the ambiguous \\\\\"commercially reasonable efforts\\\\\" language, which could impede enforcement. Financial covenant thresholds (DSCR, LTV, Leverage) are clearly stated yet the frequency of borrower certification is absent, raising compliance concerns. Critical gaps include the missing specific calendar maturity date and undefined exclusions, both of which affect legal certainty. Additionally, multiple policy checks (POL-01, POL-02, POL-03, POL-04, POL-05) failed due to system errors, necessitating human review. Prompt clarification of these ambiguities and gaps is essential to mitigate financial, legal, operational, and compliance risks.\",\\n  \"follow_up_actions\": [\\n    \"Obtain a specific calendar maturity date to replace the generic \\\\\"84 months from the date of this Agreement\\\\\" (clause 4.1).\",\\n    \"Request the borrower to define the frequency and certification process for compliance with financial covenants in Section 5 (addressing POL-13).\",\\n    \"Clarify and quantify the \\\\\"commercially reasonable efforts\\\\\" standard for maintaining working capital reserves in clause 5.4 to establish an objective measurement.\",\\n    \"Identify and document any exclusions or carve\u2011outs related to the collateral or loan obligations that are currently missing.\",\\n    \"Review and resolve the system errors causing policy checks POL-01 through POL-05 to require human review.\",\\n    \"Confirm the prepayment notice and premium terms are acceptable and assess their impact on cash flow (clause 9.1).\"\\n  ],\\n  \"risks\": [\\n    {\\n      \"title\": \"Potential breach of financial covenants (DSCR, LTV, Leverage)\",\\n      \"category\": \"financial\",\\n      \"likelihood\": \"medium\",\\n      \"severity\": \"high\",\\n      \"rationale\": \"The agreement imposes strict thresholds for DSCR (1.30x), LTV (82%), and Leverage (3.2x) that, if not met, could trigger default and accelerate repayment.\",\\n      \"mitigation\": \"Implement regular monitoring of financial metrics and establish early warning triggers well before covenant thresholds are approached.\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"5.1\",\\n          \"quote\": \"Minimum Debt Service Coverage Ratio (DSCR) (covenant): 1.30x\",\\n          \"verification_method\": \"exact\"\\n        },\\n        {\\n          \"clause_id\": \"5.2\",\\n          \"quote\": \"Maximum Loan-to-Value (LTV) Ratio (covenant): 82%\",\\n          \"verification_method\": \"exact\"\\n        },\\n        {\\n          \"clause_id\": \"5.3\",\\n          \"quote\": \"Maximum Leverage Ratio (Total Debt / EBITDA) (covenant): 3.2x\",\\n          \"verification_method\": \"exact\"\\n        }\\n      ]\\n    },\\n    {\\n      \"title\": \"Ambiguous working capital reserve requirement\",\\n      \"category\": \"operational\",\\n      \"likelihood\": \"medium\",\\n      \"severity\": \"medium\",\\n      \"rationale\": \"Clause 5.4 requires the borrower to \\\\\"maintain adequate working capital reserves\\\\\" without defining a measurable standard, creating enforcement uncertainty.\",\\n      \"mitigation\": \"Negotiate a specific numeric or formulaic definition for \\\\\"adequate\\\\\" working capital reserves.\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"5.4\",\\n          \"quote\": \"Working Capital Reserves (obligation): maintain adequate working capital reserves throughout the term of this Agreement\",\\n          \"verification_method\": \"exact\"\\n        }\\n      ]\\n    },\\n    {\\n      \"title\": \"\\\\\"Commercially reasonable efforts\\\\\" language lacks objective standard\",\\n      \"category\": \"compliance\",\\n      \"likelihood\": \"high\",\\n      \"severity\": \"high\",\\n      \"rationale\": \"Clause 5.4 uses vague language that may be interpreted differently by parties, increasing dispute risk (POL-15 fail).\",\\n      \"mitigation\": \"Amend the clause to include a concrete metric or benchmark for the effort required.\",\\n      \"evidence\": [\\n        {\\n          \"clause_id\": \"5.4\",\\n          \"quote\": \"Working\"}'}}"
   ],
   "retry_count": 0
 }
