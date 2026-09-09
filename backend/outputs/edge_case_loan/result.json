@@ -171,20 +171,7 @@
       "confidence": 0.8
     },
     {
-      "name": "Floating Interest Rate (post reset)",
-      "value": "SOFR plus 325 basis points",
-      "category": "rate",
-      "evidence": {
-        "clause_id": "9.1",
-        "quote": "for any period following a Rate Reset Event, the Loan shall instead bear interest at a floating rate equal to SOFR plus 325 basis points.",
-        "page": null,
-        "verified": true,
-        "verification_method": "exact"
-      },
-      "confidence": 0.8
-    },
-    {
-      "name": "Maturity Period",
+      "name": "Maturity",
       "value": "60 months from the date of this Agreement",
       "category": "date",
       "evidence": {
@@ -223,7 +210,7 @@
       "confidence": 0.8
     },
     {
-      "name": "Reserve Requirement",
+      "name": "Reserve Maintenance",
       "value": "reasonable efforts to maintain adequate reserves in excess of the Applicable Reserve Threshold at all times",
       "category": "covenant",
       "evidence": {
@@ -236,7 +223,7 @@
       "confidence": 0.8
     },
     {
-      "name": "Collateral Description",
+      "name": "Collateral",
       "value": "described in Schedule C attached hereto",
       "category": "collateral",
       "evidence": {
@@ -249,21 +236,8 @@
       "confidence": 0.8
     },
     {
-      "name": "Rate Reset Event Definition",
-      "value": "Not defined",
-      "category": "condition",
-      "evidence": {
-        "clause_id": "9.2",
-        "quote": "\"Rate Reset Event\" is not defined elsewhere in this Agreement.",
-        "page": null,
-        "verified": true,
-        "verification_method": "exact"
-      },
-      "confidence": 0.8
-    },
-    {
       "name": "Governing Law",
-      "value": "State of Delaware",
+      "value": "laws of the State of Delaware",
       "category": "other",
       "evidence": {
         "clause_id": "8.1",
@@ -275,12 +249,12 @@
       "confidence": 0.8
     },
     {
-      "name": "Events of Default",
-      "value": "failure to pay any principal or interest when due; breach of any financial covenant in Section 5; insolvency or bankruptcy filing by Borrower",
-      "category": "condition",
+      "name": "Floating Interest Rate",
+      "value": "SOFR plus 325 basis points",
+      "category": "rate",
       "evidence": {
-        "clause_id": "7.1",
-        "quote": "Each of the following constitutes an Event of Default under this Agreement:\n(a) failure to pay any principal or interest when due;\n(b) breach of any financial covenant in Section 5;\n(c) insolvency or bankruptcy filing by Borrower.",
+        "clause_id": "9.1",
+        "quote": "Notwithstanding Section 3.1, for any period following a Rate Reset Event, the Loan shall instead bear interest at a floating rate equal to SOFR plus 325 basis points.",
         "page": null,
         "verified": true,
         "verification_method": "exact"
@@ -289,103 +263,55 @@
     }
   ],
   "extraction_gaps": [
-    "Exact maturity date not specified",
-    "Detailed collateral description not provided",
-    "Definition of Rate Reset Event not provided",
-    "Lender's legal name not specified"
+    "Definition of Rate Reset Event is not provided.",
+    "Applicable Reserve Threshold is not defined."
   ],
   "rule_results": [
     {
       "rule_id": "POL-01",
       "rule_description": "Loan principal must not exceed the delegated authority limit of $5,000,000.",
-      "status": "fail",
-      "rationale": "The loan amount of $6,800,000 exceeds the $5,000,000 limit.",
-      "evidence": [
-        {
-          "clause_id": "2.1",
-          "quote": "2.1 The Lender agrees to extend a term loan to the Borrower in the principal amount of $6,800,000 (the \"Loan\").",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
       "severity": "high"
     },
     {
       "rule_id": "POL-02",
       "rule_description": "Minimum Debt Service Coverage Ratio (DSCR) of 1.25x is required.",
-      "status": "fail",
-      "rationale": "The required DSCR is 1.15x, which is below the minimum of 1.25x.",
-      "evidence": [
-        {
-          "clause_id": "5.1",
-          "quote": "5.1 Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.15x, tested quarterly.",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
       "severity": "critical"
     },
     {
       "rule_id": "POL-03",
       "rule_description": "Maximum Loan-to-Value (LTV) ratio is 75%.",
       "status": "needs_human_review",
-      "rationale": "The document does not provide any LTV information.",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
       "evidence": [],
       "severity": "high"
     },
     {
       "rule_id": "POL-04",
       "rule_description": "Maximum leverage (Debt/EBITDA) covenant must not exceed 3.5x.",
-      "status": "fail",
-      "rationale": "The leverage covenant of 4.0x exceeds the maximum allowed 3.5x.",
-      "evidence": [
-        {
-          "clause_id": "5.2",
-          "quote": "5.2 Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 4.0x.",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
       "severity": "high"
     },
     {
       "rule_id": "POL-05",
       "rule_description": "Interest rate structure (fixed or floating) must be unambiguous and internally consistent.",
-      "status": "fail",
-      "rationale": "The agreement references both a fixed rate and a floating rate contingent on an undefined Rate Reset Event, creating ambiguity and inconsistency.",
-      "evidence": [
-        {
-          "clause_id": "3.1",
-          "quote": "3.1 The Loan shall bear interest at a fixed rate of 8.5% per annum.",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        },
-        {
-          "clause_id": "9.1",
-          "quote": "9.1 Notwithstanding Section 3.1, for any period following a Rate Reset Event, the Loan shall instead bear interest at a floating rate equal to SOFR plus 325 basis points.",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        },
-        {
-          "clause_id": "9.2",
-          "quote": "9.2 A \"Rate Reset Event\" is not defined elsewhere in this Agreement.",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
       "severity": "critical"
     },
     {
       "rule_id": "POL-06",
-      "rule_description": "Collateral must be explicitly identified and sufficiently described (asset type, location/identifier). \u2014 check: A collateral clause exists and names a specific, identifiable asset.",
+      "rule_description": "Collateral must be explicitly identified and sufficiently described (asset type, location/identifier).",
       "status": "fail",
-      "rationale": "The collateral clause references Schedule C but does not name a specific asset type, location, or identifier, so the collateral is not explicitly identified and sufficiently described.",
+      "rationale": "The collateral clause references Schedule C but does not name a specific, identifiable asset, nor provide asset type, location, or identifier.",
       "evidence": [
         {
           "clause_id": "6.1",
@@ -399,9 +325,9 @@
     },
     {
       "rule_id": "POL-07",
-      "rule_description": "Borrower and lender parties must be fully and unambiguously identified. \u2014 check: Both parties are named with legal entity form (e.g. Inc., LLC, Ltd).",
+      "rule_description": "Borrower and lender parties must be fully and unambiguously identified.",
       "status": "fail",
-      "rationale": "The Borrower is fully identified, but the Lender is referred to only as \"Lender\" without a legal entity designation, so parties are not fully and unambiguously identified.",
+      "rationale": "The parties clause names the borrower but does not include a legal entity suffix, and the lender is identified only as \"Lender\" without any legal entity designation.",
       "evidence": [
         {
           "clause_id": "1",
@@ -415,9 +341,9 @@
     },
     {
       "rule_id": "POL-08",
-      "rule_description": "Loan maturity/term must be explicitly stated. \u2014 check: A maturity date or term length is present.",
+      "rule_description": "Loan maturity/term must be explicitly stated.",
       "status": "pass",
-      "rationale": "The maturity term is explicitly stated as 60 months from the agreement date.",
+      "rationale": "The maturity clause specifies that the loan shall mature 60 months from the date of the agreement.",
       "evidence": [
         {
           "clause_id": "4.1",
@@ -431,17 +357,17 @@
     },
     {
       "rule_id": "POL-09",
-      "rule_description": "Financial reporting obligations must be specified (frequency and type of reports). \u2014 check: The document specifies periodic financial reporting requirements.",
+      "rule_description": "Financial reporting obligations must be specified (frequency and type of reports).",
       "status": "needs_human_review",
-      "rationale": "The document does not contain any clause specifying the frequency or type of financial reporting required from the Borrower.",
+      "rationale": "The document does not contain any clause that outlines periodic financial reporting requirements; insufficient information to determine compliance.",
       "evidence": [],
       "severity": "medium"
     },
     {
       "rule_id": "POL-10",
-      "rule_description": "Events of default must be enumerated. \u2014 check: The document lists specific events that constitute default.",
+      "rule_description": "Events of default must be enumerated.",
       "status": "pass",
-      "rationale": "The Events of Default are enumerated in clause 7.1.",
+      "rationale": "The events of default clause lists specific events that constitute default.",
       "evidence": [
         {
           "clause_id": "7.1",
@@ -455,134 +381,76 @@
     },
     {
       "rule_id": "POL-11",
-      "rule_description": "Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set.",
+      "rule_description": "Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set. \u2014 check: No dangling references to schedules/exhibits that are missing from the provided document.",
       "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-      "evidence": [],
+      "rationale": "Schedule C is referenced but the schedule itself is not included in the provided document set.",
+      "evidence": [
+        {
+          "clause_id": "6.1",
+          "quote": "6.1 Collateral for this Loan is described in Schedule C attached hereto.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "medium"
     },
     {
       "rule_id": "POL-12",
-      "rule_description": "Prepayment terms must be defined (permitted or restricted, and any penalty).",
+      "rule_description": "Prepayment terms must be defined (permitted or restricted, and any penalty). \u2014 check: The document addresses whether prepayment is allowed and on what terms.",
       "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "rationale": "The agreement contains no clause describing prepayment permissions, restrictions, or penalties.",
       "evidence": [],
-      "severity": "low"
+      "severity": "medium"
     },
     {
       "rule_id": "POL-13",
-      "rule_description": "Covenant compliance certification frequency must be specified.",
+      "rule_description": "Covenant compliance certification frequency must be specified. \u2014 check: The document states how often the borrower must certify covenant compliance.",
       "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "rationale": "The agreement specifies testing frequency for DSCR (quarterly) but does not state how often the borrower must certify covenant compliance.",
       "evidence": [],
-      "severity": "low"
+      "severity": "medium"
     },
     {
       "rule_id": "POL-14",
-      "rule_description": "Governing law and jurisdiction must be specified.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-      "evidence": [],
-      "severity": "low"
+      "rule_description": "Governing law and jurisdiction must be specified. \u2014 check: A governing law clause is present.",
+      "status": "pass",
+      "rationale": "Governing law clause is present and identifies the State of Delaware.",
+      "evidence": [
+        {
+          "clause_id": "8.1",
+          "quote": "8.1 This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "medium"
     },
     {
       "rule_id": "POL-15",
-      "rule_description": "Any 'reasonable efforts' / 'commercially reasonable' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards.",
-      "status": "needs_human_review",
-      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-      "evidence": [],
+      "rule_description": "Any 'reasonable efforts' / 'commercially reasonable' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards. \u2014 check: Vague effort-based covenants must be paired with a measurable threshold.",
+      "status": "fail",
+      "rationale": "The covenant uses \"reasonable efforts\" to maintain reserves but does not define a measurable threshold or objective standard.",
+      "evidence": [
+        {
+          "clause_id": "5.3",
+          "quote": "5.3 Borrower shall use reasonable efforts to maintain adequate reserves in excess of the Applicable Reserve Threshold at all times.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
       "severity": "medium"
     }
   ],
   "risks": [
     {
-      "title": "Loan amount exceeds policy limit",
+      "title": "Collateral description insufficient",
       "category": "financial",
       "severity": "high",
       "likelihood": "high",
-      "rationale": "The loan amount exceeds the policy\u2011defined maximum, creating a breach of financial limits.",
-      "evidence": [
-        {
-          "clause_id": "2.1",
-          "quote": "$6,800,000",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
-      "mitigation": "Reduce the loan amount or obtain a policy waiver to comply with the $5,000,000 limit."
-    },
-    {
-      "title": "Insufficient Debt Service Coverage Ratio",
-      "category": "financial",
-      "severity": "critical",
-      "likelihood": "high",
-      "rationale": "The required DSCR of 1.15x is below the minimum acceptable threshold of 1.25x.",
-      "evidence": [
-        {
-          "clause_id": "5.1",
-          "quote": "1.15x",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
-      "mitigation": "Increase Borrower cash flow, reduce loan size, or raise the DSCR covenant to at least 1.25x."
-    },
-    {
-      "title": "Leverage ratio exceeds allowable maximum",
-      "category": "financial",
-      "severity": "high",
-      "likelihood": "high",
-      "rationale": "The leverage covenant of 4.0x exceeds the allowable maximum of 3.5x.",
-      "evidence": [
-        {
-          "clause_id": "5.2",
-          "quote": "4.0x",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
-      "mitigation": "Adjust capital structure to lower leverage or obtain a waiver for the higher ratio."
-    },
-    {
-      "title": "Undefined Rate Reset Event leading to ambiguous interest terms",
-      "category": "legal",
-      "severity": "critical",
-      "likelihood": "high",
-      "rationale": "The agreement references both a fixed rate and a floating rate contingent on an undefined event, creating legal uncertainty.",
-      "evidence": [
-        {
-          "clause_id": "9.2",
-          "quote": "Not defined",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        },
-        {
-          "clause_id": "3.1",
-          "quote": "8.5% per annum",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        },
-        {
-          "clause_id": "9.1",
-          "quote": "SOFR plus 325 basis points",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
-      "mitigation": "Define the Rate Reset Event and align fixed and floating rate provisions to eliminate ambiguity."
-    },
-    {
-      "title": "Insufficient collateral description",
-      "category": "operational",
-      "severity": "high",
-      "likelihood": "high",
-      "rationale": "Collateral is referenced only generically, making it difficult to assess enforceability and value.",
+      "rationale": "Collateral is only referenced as described in Schedule C without specifying asset type, location, or identifier, increasing risk of inadequate security.",
       "evidence": [
         {
           "clause_id": "6.1",
@@ -592,96 +460,54 @@
           "verification_method": "exact"
         }
       ],
-      "mitigation": "Provide a detailed description of the collateral assets, including type, location, and identifiers."
+      "mitigation": "Obtain detailed collateral schedule specifying asset details and valuations."
     },
     {
-      "title": "Lender not fully identified",
-      "category": "legal",
+      "title": "Reserve maintenance covenant vague",
+      "category": "compliance",
       "severity": "medium",
       "likelihood": "medium",
-      "rationale": "The Lender is identified only as \"Lender,\" which may cause ambiguity in enforcement.",
+      "rationale": "The covenant uses \"reasonable efforts\" and references an undefined Applicable Reserve Threshold, making enforcement uncertain.",
       "evidence": [
         {
-          "clause_id": "1",
-          "quote": "Lender",
+          "clause_id": "5.3",
+          "quote": "reasonable efforts to maintain adequate reserves in excess of the Applicable Reserve Threshold at all times",
           "page": null,
           "verified": true,
           "verification_method": "exact"
         }
       ],
-      "mitigation": "Amend the parties clause to include the Lender's full legal entity name and jurisdiction."
-    },
-    {
-      "title": "Missing Loan\u2011to\u2011Value (LTV) information",
-      "category": "financial",
-      "severity": "high",
-      "likelihood": "high",
-      "rationale": "The agreement does not provide any LTV information, preventing assessment of loan risk.",
-      "evidence": [],
-      "mitigation": "Obtain a loan\u2011to\u2011value (LTV) calculation and supporting documentation."
-    },
-    {
-      "title": "Absent financial reporting requirements",
-      "category": "operational",
-      "severity": "medium",
-      "likelihood": "medium",
-      "rationale": "No clause defines the Borrower's financial reporting obligations, hindering monitoring.",
-      "evidence": [],
-      "mitigation": "Specify the required financial reporting frequency, format, and delivery deadlines in the agreement."
-    },
-    {
-      "title": "Exact maturity date not specified",
-      "category": "operational",
-      "severity": "low",
-      "likelihood": "medium",
-      "rationale": "The maturity is expressed only as a relative period, leaving the precise payoff date ambiguous.",
-      "evidence": [
-        {
-          "clause_id": "4.1",
-          "quote": "60 months from the date of this Agreement",
-          "page": null,
-          "verified": true,
-          "verification_method": "exact"
-        }
-      ],
-      "mitigation": "Add an exact maturity date (calendar date) to the agreement."
+      "mitigation": "Define a specific reserve threshold and measurable criteria."
     }
   ],
-  "executive_summary": "The loan agreement presents several high\u2011risk issues: the principal of $6,800,000 exceeds the $5,000,000 policy cap, the minimum DSCR of 1.15x falls short of the required 1.25x, and the leverage covenant of 4.0x surpasses the allowable 3.5x. Additionally, the interest rate structure is ambiguous because the Rate Reset Event is not defined, and the collateral description is insufficient, referencing only Schedule C without asset details. The lender is identified merely as \"Lender\" without a legal entity name, and critical information such as LTV metrics, exact maturity date, and financial reporting requirements are missing. These deficiencies create significant financial, legal, operational, and compliance risks that must be addressed before proceeding.",
+  "executive_summary": "The loan agreement presents several high\u2011risk issues, notably an insufficiently described collateral reference and a vague reserve maintenance covenant that lack measurable standards. Critical information gaps include missing Schedule C details, undefined reserve thresholds, absent financial reporting and prepayment provisions, and unclear DSCR certification frequency. Additionally, the parties are not fully identified, and multiple compliance checks failed due to system errors, creating further uncertainty. These deficiencies elevate financial, legal, operational, and compliance risks and require immediate clarification. Prompt remediation and supplemental documentation are essential before proceeding.",
   "follow_up_actions": [
-    "Obtain a waiver or reduce the loan amount to meet the $5,000,000 limit (clause 2.1).",
-    "Renegotiate the DSCR covenant to at least 1.25x or improve Borrower cash flow (clause 5.1).",
-    "Adjust the leverage covenant to a maximum of 3.5x or increase equity (clause 5.2).",
-    "Define the Rate Reset Event and reconcile the fixed and floating rate provisions (clauses 3.1, 9.1, 9.2).",
-    "Provide a detailed collateral schedule with asset type, location, and identifiers (clause 6.1).",
-    "Amend clause 1 to specify the Lender's full legal entity name.",
-    "Supply a loan\u2011to\u2011value (LTV) analysis and supporting documentation.",
-    "Specify the exact maturity date rather than a relative period (clause 4.1).",
-    "Establish and document the frequency and type of financial reporting required from the Borrower."
+    "Obtain the full Schedule C document and verify detailed asset descriptions, locations, and valuations.",
+    "Define the Applicable Reserve Threshold and replace \"reasonable efforts\" with a quantifiable reserve requirement.",
+    "Add a clause specifying periodic financial reporting requirements (e.g., quarterly financial statements).",
+    "Include prepayment terms outlining permissions, restrictions, and any applicable penalties.",
+    "Specify the frequency and process for borrower certification of DSCR compliance.",
+    "Amend the parties clause to include complete legal entity designations for both borrower and lender.",
+    "Provide a definition of the Rate Reset Event and any related reset mechanics.",
+    "Resolve system errors for compliance checks POL-01 through POL-05 and obtain a complete compliance review."
   ],
   "escalations": [
-    "Compliance rule 'POL-01' FAILED (high): Loan principal must not exceed the delegated authority limit of $5,000,000.",
-    "Compliance rule 'POL-02' FAILED (critical): Minimum Debt Service Coverage Ratio (DSCR) of 1.25x is required.",
-    "Compliance rule 'POL-04' FAILED (high): Maximum leverage (Debt/EBITDA) covenant must not exceed 3.5x.",
-    "Compliance rule 'POL-05' FAILED (critical): Interest rate structure (fixed or floating) must be unambiguous and internally consistent.",
-    "Compliance rule 'POL-06' FAILED (high): Collateral must be explicitly identified and sufficiently described (asset type, location/identifier). \u2014 check: A collateral clause exists and names a specific, identifiable asset.",
-    "Compliance rule 'POL-03' needs human review: The document does not provide any LTV information.",
-    "Compliance rule 'POL-09' needs human review: The document does not contain any clause specifying the frequency or type of financial reporting required from the Borrower.",
-    "Compliance rule 'POL-11' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Compliance rule 'POL-12' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Compliance rule 'POL-13' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Compliance rule 'POL-14' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Compliance rule 'POL-15' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
-    "Critical risk: Insufficient Debt Service Coverage Ratio",
-    "Critical risk: Undefined Rate Reset Event leading to ambiguous interest terms",
-    "Missing/ambiguous information: Exact maturity date not specified",
-    "Missing/ambiguous information: Detailed collateral description not provided",
-    "Missing/ambiguous information: Definition of Rate Reset Event not provided",
-    "Missing/ambiguous information: Lender's legal name not specified"
+    "Compliance rule 'POL-06' FAILED (high): Collateral must be explicitly identified and sufficiently described (asset type, location/identifier).",
+    "Compliance rule 'POL-01' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-02' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-03' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-04' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-05' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-09' needs human review: The document does not contain any clause that outlines periodic financial reporting requirements; insufficient information to determine compliance.",
+    "Compliance rule 'POL-11' needs human review: Schedule C is referenced but the schedule itself is not included in the provided document set.",
+    "Compliance rule 'POL-12' needs human review: The agreement contains no clause describing prepayment permissions, restrictions, or penalties.",
+    "Compliance rule 'POL-13' needs human review: The agreement specifies testing frequency for DSCR (quarterly) but does not state how often the borrower must certify covenant compliance.",
+    "Missing/ambiguous information: Definition of Rate Reset Event is not provided.",
+    "Missing/ambiguous information: Applicable Reserve Threshold is not defined."
   ],
   "overall_status": "human_review",
   "errors": [
-    "compliance_batch_failed (['POL-11', 'POL-12', 'POL-13', 'POL-14', 'POL-15']): Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6963, Requested 5013. Please try again in 29.82s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    "compliance_batch_failed (['POL-01', 'POL-02', 'POL-03', 'POL-04', 'POL-05']): Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6438, Requested 4207. Please try again in 19.8375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
   ],
-  "retry_count": 0
+  "retry_count": 1
 }
