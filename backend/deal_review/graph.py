@@ -15,6 +15,13 @@ RULE_BATCH_SIZE = 5
 MAX_EXTRACTION_RETRIES = 1
 LLM_RETRY = RetryPolicy(max_attempts=3, initial_interval=1.0, backoff_factor=2.0)
 
+# Groq's per-minute token quota is charged against max_tokens, not actual output length — size
+# each call to what it actually needs so 3 parallel compliance batches don't reserve 3x more
+# than they'll use and starve the shared budget.
+EXTRACTION_MAX_TOKENS = 5000
+COMPLIANCE_MAX_TOKENS = 2000
+RISK_MAX_TOKENS = 3000
+
 
 def _make_rule_batches(rules: list[Rule]) -> list[list[Rule]]:
     return [rules[i : i + RULE_BATCH_SIZE] for i in range(0, len(rules), RULE_BATCH_SIZE)]
@@ -32,7 +39,7 @@ def _terms_text(terms) -> str:
 
 
 def extract_terms_node(state: DealState) -> dict:
-    llm = get_llm().with_structured_output(TermList)
+    llm = get_llm(max_tokens=EXTRACTION_MAX_TOKENS).with_structured_output(TermList)
     prompt = extraction_prompt(state["clause_index"])
     try:
         result: TermList = llm.invoke(prompt)
@@ -44,7 +51,7 @@ def extract_terms_node(state: DealState) -> dict:
 
 def retry_extraction_node(state: DealState) -> dict:
     failed = [t for t in state.get("terms", []) if not t.evidence.verified]
-    llm = get_llm().with_structured_output(TermList)
+    llm = get_llm(max_tokens=EXTRACTION_MAX_TOKENS).with_structured_output(TermList)
     if failed:
         failed_desc = "\n".join(
             f"- {t.name}: cited clause {t.evidence.clause_id}, quote \"{t.evidence.quote}\" "
@@ -110,7 +117,7 @@ def route_after_retry(state: DealState):
 
 def compliance_batch_node(state: DealState) -> dict:
     rules: list[Rule] = state["rules"]
-    llm = get_llm().with_structured_output(RuleBatchResult)
+    llm = get_llm(max_tokens=COMPLIANCE_MAX_TOKENS).with_structured_output(RuleBatchResult)
     rules_text = "\n".join(f"[{r.id}] ({r.severity}) {r.description} — check: {r.check}" for r in rules)
     prompt = compliance_prompt(rules_text, _terms_text(state["terms"]), state["clause_index"])
     try:
@@ -136,7 +143,7 @@ def compliance_batch_node(state: DealState) -> dict:
 
 
 def risk_summary_node(state: DealState) -> dict:
-    llm = get_llm().with_structured_output(RiskSummary)
+    llm = get_llm(max_tokens=RISK_MAX_TOKENS).with_structured_output(RiskSummary)
     compliance_text = "\n".join(
         f"- [{r.rule_id}] {r.status} ({r.severity}): {r.rationale}" for r in state.get("rule_results", [])
     ) or "No compliance results."

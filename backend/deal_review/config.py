@@ -19,14 +19,16 @@ _DEFAULT_MODELS = {
 VISION_MODEL = os.getenv("VISION_MODEL", "openai/gpt-oss-120b")
 
 
-def get_llm(temperature: float = 0.0):
+def get_llm(temperature: float = 0.0, max_tokens: int = 4000):
     provider = LLM_PROVIDER
     model = LLM_MODEL or _DEFAULT_MODELS[provider]
 
     if provider == "groq":
-        # Structured-output responses (terms + evidence quotes for a full document) can be long;
-        # Groq's tool-call JSON gets truncated (and fails to parse) on the default token budget.
-        return ChatGroq(model=model, temperature=temperature, max_tokens=8000, api_key=os.environ["GROQ_API_KEY"])
+        # Groq's per-minute token quota is charged against max_tokens (the reservation), not
+        # actual output length — so a uniform generous max_tokens on every parallel call burns
+        # through the shared TPM budget fast. Callers should pass a budget sized to what that
+        # specific call actually needs (see graph.py).
+        return ChatGroq(model=model, temperature=temperature, max_tokens=max_tokens, api_key=os.environ["GROQ_API_KEY"])
     if provider == "openrouter":
         return ChatOpenAI(
             model=model,

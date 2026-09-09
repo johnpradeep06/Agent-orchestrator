@@ -1,0 +1,738 @@
+{
+  "run_id": "",
+  "document_text": "# Commercial Term Loan Agreement\n\n*Synthetic document for pipeline validation. No real parties, figures, or events.*\n\n### 1. Parties\n\nThis Commercial Term Loan Agreement (\"Agreement\") is entered into between Meridian Manufacturing LLC,\na limited liability company (\"Borrower\"), and Highland Capital Bank, N.A. (\"Lender\").\n\n### 2. Loan Amount\n\n2.1 The Lender agrees to extend a term loan to the Borrower in the principal amount of $4,200,000\n(the \"Loan\").\n\n### 3. Interest Rate\n\n3.1 The Loan shall bear interest at a fixed rate of 7.25% per annum, calculated on the outstanding\nprincipal balance, payable monthly in arrears.\n\n### 4. Maturity\n\n4.1 The Loan shall mature 84 months from the date of this Agreement, at which point all outstanding\nprincipal and accrued interest shall be due in full.\n\n### 5. Financial Covenants\n\n5.1 Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, tested quarterly\nbased on trailing twelve-month financials.\n\n5.2 Borrower shall maintain a maximum Loan-to-Value (LTV) ratio of 82%, based on the most recent\nappraisal of the Collateral.\n\n5.3 Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, tested quarterly.\n\n5.4 Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves\nthroughout the term of this Agreement.\n\n### 6. Collateral\n\n6.1 As security for the Loan, Borrower grants Lender a first-priority lien on the manufacturing facility\nlocated at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.\n\n### 7. Reporting Obligations\n\n7.1 Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each\nfiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.\n\n### 8. Events of Default\n\n8.1 Each of the following constitutes an Event of Default under this Agreement:\n(a) failure to pay any principal or interest when due;\n(b) breach of any financial covenant in Section 5;\n(c) any material misrepresentation by Borrower;\n(d) insolvency or bankruptcy filing by Borrower;\n(e) a change of control of Borrower without Lender's prior written consent.\n\n### 9. Prepayment\n\n9.1 Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject\nto a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.\n\n### 10. Governing Law\n\n10.1 This Agreement shall be governed by and construed in accordance with the laws of the State of\nNew York.\n\n### 11. Schedule A \u2014 Collateral Description\n\n11.1 Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at\n4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.\n",
+  "clause_index": {
+    "1": "### 1. Parties\n\nThis Commercial Term Loan Agreement (\"Agreement\") is entered into between Meridian Manufacturing LLC,\na limited liability company (\"Borrower\"), and Highland Capital Bank, N.A. (\"Lender\").",
+    "2": "### 2. Loan Amount",
+    "2.1": "2.1 The Lender agrees to extend a term loan to the Borrower in the principal amount of $4,200,000\n(the \"Loan\").",
+    "3": "### 3. Interest Rate",
+    "3.1": "3.1 The Loan shall bear interest at a fixed rate of 7.25% per annum, calculated on the outstanding\nprincipal balance, payable monthly in arrears.",
+    "4": "### 4. Maturity",
+    "4.1": "4.1 The Loan shall mature 84 months from the date of this Agreement, at which point all outstanding\nprincipal and accrued interest shall be due in full.",
+    "5": "### 5. Financial Covenants",
+    "5.1": "5.1 Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, tested quarterly\nbased on trailing twelve-month financials.",
+    "5.2": "5.2 Borrower shall maintain a maximum Loan-to-Value (LTV) ratio of 82%, based on the most recent\nappraisal of the Collateral.",
+    "5.3": "5.3 Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, tested quarterly.",
+    "5.4": "5.4 Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves\nthroughout the term of this Agreement.",
+    "6": "### 6. Collateral",
+    "6.1": "6.1 As security for the Loan, Borrower grants Lender a first-priority lien on the manufacturing facility\nlocated at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
+    "7": "### 7. Reporting Obligations",
+    "7.1": "7.1 Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each\nfiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
+    "8": "### 8. Events of Default",
+    "8.1": "8.1 Each of the following constitutes an Event of Default under this Agreement:\n(a) failure to pay any principal or interest when due;\n(b) breach of any financial covenant in Section 5;\n(c) any material misrepresentation by Borrower;\n(d) insolvency or bankruptcy filing by Borrower;\n(e) a change of control of Borrower without Lender's prior written consent.",
+    "9": "### 9. Prepayment",
+    "9.1": "9.1 Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject\nto a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
+    "10": "### 10. Governing Law",
+    "10.1": "10.1 This Agreement shall be governed by and construed in accordance with the laws of the State of\nNew York.",
+    "11": "### 11. Schedule A \u2014 Collateral Description",
+    "11.1": "11.1 Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at\n4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto."
+  },
+  "page_map": {},
+  "ingestion_notes": [],
+  "rules": [
+    {
+      "id": "POL-01",
+      "description": "Loan principal must not exceed the delegated authority limit of $5,000,000.",
+      "check": "Extracted principal/loan amount <= 5,000,000 USD (or currency-equivalent).",
+      "severity": "high"
+    },
+    {
+      "id": "POL-02",
+      "description": "Minimum Debt Service Coverage Ratio (DSCR) of 1.25x is required.",
+      "check": "Extracted DSCR covenant >= 1.25x.",
+      "severity": "critical"
+    },
+    {
+      "id": "POL-03",
+      "description": "Maximum Loan-to-Value (LTV) ratio is 75%.",
+      "check": "Extracted LTV <= 75%.",
+      "severity": "high"
+    },
+    {
+      "id": "POL-04",
+      "description": "Maximum leverage (Debt/EBITDA) covenant must not exceed 3.5x.",
+      "check": "Extracted leverage covenant <= 3.5x.",
+      "severity": "high"
+    },
+    {
+      "id": "POL-05",
+      "description": "Interest rate structure (fixed or floating) must be unambiguous and internally consistent.",
+      "check": "The document must not state conflicting rate types or values across clauses.",
+      "severity": "critical"
+    },
+    {
+      "id": "POL-06",
+      "description": "Collateral must be explicitly identified and sufficiently described (asset type, location/identifier).",
+      "check": "A collateral clause exists and names a specific, identifiable asset.",
+      "severity": "high"
+    },
+    {
+      "id": "POL-07",
+      "description": "Borrower and lender parties must be fully and unambiguously identified.",
+      "check": "Both parties are named with legal entity form (e.g. Inc., LLC, Ltd).",
+      "severity": "medium"
+    },
+    {
+      "id": "POL-08",
+      "description": "Loan maturity/term must be explicitly stated.",
+      "check": "A maturity date or term length is present.",
+      "severity": "medium"
+    },
+    {
+      "id": "POL-09",
+      "description": "Financial reporting obligations must be specified (frequency and type of reports).",
+      "check": "The document specifies periodic financial reporting requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "POL-10",
+      "description": "Events of default must be enumerated.",
+      "check": "The document lists specific events that constitute default.",
+      "severity": "medium"
+    },
+    {
+      "id": "POL-11",
+      "description": "Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set.",
+      "check": "No dangling references to schedules/exhibits that are missing from the provided document.",
+      "severity": "medium"
+    },
+    {
+      "id": "POL-12",
+      "description": "Prepayment terms must be defined (permitted or restricted, and any penalty).",
+      "check": "The document addresses whether prepayment is allowed and on what terms.",
+      "severity": "low"
+    },
+    {
+      "id": "POL-13",
+      "description": "Covenant compliance certification frequency must be specified.",
+      "check": "The document states how often the borrower must certify covenant compliance.",
+      "severity": "low"
+    },
+    {
+      "id": "POL-14",
+      "description": "Governing law and jurisdiction must be specified.",
+      "check": "A governing law clause is present.",
+      "severity": "low"
+    },
+    {
+      "id": "POL-15",
+      "description": "Any 'reasonable efforts' / 'commercially reasonable' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards.",
+      "check": "Vague effort-based covenants must be paired with a measurable threshold.",
+      "severity": "medium"
+    }
+  ],
+  "terms": [
+    {
+      "name": "Borrower",
+      "value": "Meridian Manufacturing LLC",
+      "category": "party",
+      "evidence": {
+        "clause_id": "1",
+        "quote": "This Commercial Term Loan Agreement (\"Agreement\") is entered into between Meridian Manufacturing LLC, a limited liability company (\"Borrower\"), and Highland Capital Bank, N.A. (\"Lender\").",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Lender",
+      "value": "Highland Capital Bank, N.A.",
+      "category": "party",
+      "evidence": {
+        "clause_id": "1",
+        "quote": "This Commercial Term Loan Agreement (\"Agreement\") is entered into between Meridian Manufacturing LLC, a limited liability company (\"Borrower\"), and Highland Capital Bank, N.A. (\"Lender\").",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Loan Amount",
+      "value": "$4,200,000",
+      "category": "value",
+      "evidence": {
+        "clause_id": "2.1",
+        "quote": "The Lender agrees to extend a term loan to the Borrower in the principal amount of $4,200,000 (the \"Loan\").",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Interest Rate",
+      "value": "7.25% per annum",
+      "category": "rate",
+      "evidence": {
+        "clause_id": "3.1",
+        "quote": "The Loan shall bear interest at a fixed rate of 7.25% per annum, calculated on the outstanding principal balance, payable monthly in arrears.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Maturity",
+      "value": "84 months from the date of this Agreement",
+      "category": "date",
+      "evidence": {
+        "clause_id": "4.1",
+        "quote": "The Loan shall mature 84 months from the date of this Agreement, at which point all outstanding principal and accrued interest shall be due in full.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Minimum Debt Service Coverage Ratio (DSCR)",
+      "value": "1.30x",
+      "category": "covenant",
+      "evidence": {
+        "clause_id": "5.1",
+        "quote": "Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, tested quarterly based on trailing twelve-month financials.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Maximum Loan-to-Value (LTV) Ratio",
+      "value": "82%",
+      "category": "covenant",
+      "evidence": {
+        "clause_id": "5.2",
+        "quote": "Borrower shall maintain a maximum Loan-to-Value (LTV) ratio of 82%, based on the most recent appraisal of the Collateral.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Maximum Leverage Ratio (Total Debt / EBITDA)",
+      "value": "3.2x",
+      "category": "covenant",
+      "evidence": {
+        "clause_id": "5.3",
+        "quote": "Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, tested quarterly.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Working Capital Reserve Obligation",
+      "value": "Use commercially reasonable efforts to maintain adequate working capital reserves throughout the term of this Agreement",
+      "category": "covenant",
+      "evidence": {
+        "clause_id": "5.4",
+        "quote": "Borrower shall use commercially reasonable efforts to maintain adequate working capital reserves throughout the term of this Agreement.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Collateral Lien",
+      "value": "First\u2011priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744",
+      "category": "collateral",
+      "evidence": {
+        "clause_id": "6.1",
+        "quote": "As security for the Loan, Borrower grants Lender a first\u2011priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
+        "page": null,
+        "verified": true,
+        "verification_method": "fuzzy"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Facility Description",
+      "value": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1\u2011acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
+      "category": "collateral",
+      "evidence": {
+        "clause_id": "11.1",
+        "quote": "Manufacturing facility, approximately 62,000 square feet, situated on a 4.1\u2011acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
+        "page": null,
+        "verified": true,
+        "verification_method": "fuzzy"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Quarterly Financial Reporting",
+      "value": "Quarterly unaudited financial statements within 45 days of each fiscal quarter end",
+      "category": "obligation",
+      "evidence": {
+        "clause_id": "7.1",
+        "quote": "Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Annual Financial Reporting",
+      "value": "Annual audited financial statements within 120 days of each fiscal year end",
+      "category": "obligation",
+      "evidence": {
+        "clause_id": "7.1",
+        "quote": "Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Event of Default - Failure to Pay",
+      "value": "failure to pay any principal or interest when due",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "(a) failure to pay any principal or interest when due;",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Event of Default - Breach of Financial Covenant",
+      "value": "breach of any financial covenant in Section 5",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "(b) breach of any financial covenant in Section 5;",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Event of Default - Material Misrepresentation",
+      "value": "any material misrepresentation by Borrower",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "(c) any material misrepresentation by Borrower;",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Event of Default - Insolvency",
+      "value": "insolvency or bankruptcy filing by Borrower",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "(d) insolvency or bankruptcy filing by Borrower;",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Event of Default - Change of Control",
+      "value": "a change of control of Borrower without Lender's prior written consent",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "8.1",
+        "quote": "(e) a change of control of Borrower without Lender's prior written consent.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Prepayment Notice",
+      "value": "30 days' written notice",
+      "category": "condition",
+      "evidence": {
+        "clause_id": "9.1",
+        "quote": "Borrower may prepay the Loan in whole or in part at any time upon 30 days' written notice, subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Prepayment Premium",
+      "value": "2% of the amount prepaid if prepayment occurs within the first 24 months",
+      "category": "rate",
+      "evidence": {
+        "clause_id": "9.1",
+        "quote": "subject to a prepayment premium of 2% of the amount prepaid if prepayment occurs within the first 24 months.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    },
+    {
+      "name": "Governing Law",
+      "value": "State of New York",
+      "category": "other",
+      "evidence": {
+        "clause_id": "10.1",
+        "quote": "This Agreement shall be governed by and construed in accordance with the laws of the State of New York.",
+        "page": null,
+        "verified": true,
+        "verification_method": "exact"
+      },
+      "confidence": 0.8
+    }
+  ],
+  "extraction_gaps": [
+    "Exact calendar maturity date not specified",
+    "Principal repayment schedule not specified",
+    "Collateral appraisal date/value not provided",
+    "Definition of \"Change of Control\" not provided",
+    "Origination fee not mentioned"
+  ],
+  "rule_results": [
+    {
+      "rule_id": "POL-01",
+      "rule_description": "Loan principal must not exceed the delegated authority limit of $5,000,000.",
+      "status": "pass",
+      "rationale": "The loan amount is $4,200,000, which is below the $5,000,000 limit.",
+      "evidence": [
+        {
+          "clause_id": "2.1",
+          "quote": "2.1 The Lender agrees to extend a term loan to the Borrower in the principal amount of $4,200,000 (the \"Loan\").",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "high"
+    },
+    {
+      "rule_id": "POL-02",
+      "rule_description": "Minimum Debt Service Coverage Ratio (DSCR) of 1.25x is required.",
+      "status": "pass",
+      "rationale": "The covenant requires a DSCR of 1.30x, which meets the minimum 1.25x.",
+      "evidence": [
+        {
+          "clause_id": "5.1",
+          "quote": "5.1 Borrower shall maintain a minimum Debt Service Coverage Ratio (DSCR) of 1.30x, tested quarterly based on trailing twelve-month financials.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "critical"
+    },
+    {
+      "rule_id": "POL-03",
+      "rule_description": "Maximum Loan-to-Value (LTV) ratio is 75%.",
+      "status": "fail",
+      "rationale": "The covenant sets the LTV at 82%, which exceeds the allowed maximum of 75%.",
+      "evidence": [
+        {
+          "clause_id": "5.2",
+          "quote": "5.2 Borrower shall maintain a maximum Loan-to-Value (LTV) ratio of 82%, based on the most recent appraisal of the Collateral.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "high"
+    },
+    {
+      "rule_id": "POL-04",
+      "rule_description": "Maximum leverage (Debt/EBITDA) covenant must not exceed 3.5x.",
+      "status": "pass",
+      "rationale": "The covenant limits leverage to 3.2x, which is within the 3.5x ceiling.",
+      "evidence": [
+        {
+          "clause_id": "5.3",
+          "quote": "5.3 Borrower shall maintain a maximum leverage ratio (Total Debt / EBITDA) of 3.2x, tested quarterly.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "high"
+    },
+    {
+      "rule_id": "POL-05",
+      "rule_description": "Interest rate structure (fixed or floating) must be unambiguous and internally consistent.",
+      "status": "pass",
+      "rationale": "Clause 3.1 explicitly states a fixed rate of 7.25% per annum and no other clause contradicts this.",
+      "evidence": [
+        {
+          "clause_id": "3.1",
+          "quote": "3.1 The Loan shall bear interest at a fixed rate of 7.25% per annum, calculated on the outstanding principal balance, payable monthly in arrears.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "critical"
+    },
+    {
+      "rule_id": "POL-06",
+      "rule_description": "Collateral must be explicitly identified and sufficiently described (asset type, location/identifier).",
+      "status": "pass",
+      "rationale": "The agreement includes a collateral clause that identifies a specific manufacturing facility with address and detailed description.",
+      "evidence": [
+        {
+          "clause_id": "6.1",
+          "quote": "6.1 As security for the Loan, Borrower grants Lender a first\u2011priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744, as more particularly described in Schedule A.",
+          "page": null,
+          "verified": true,
+          "verification_method": "fuzzy"
+        },
+        {
+          "clause_id": "11.1",
+          "quote": "11.1 Manufacturing facility, approximately 62,000 square feet, situated on a 4.1-acre parcel at 4400 Industrial Parkway, Austin, TX 78744, together with all fixtures and equipment affixed thereto.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "high"
+    },
+    {
+      "rule_id": "POL-07",
+      "rule_description": "Borrower and lender parties must be fully and unambiguously identified.",
+      "status": "pass",
+      "rationale": "Both parties are named with their legal entity designations in the Parties clause.",
+      "evidence": [
+        {
+          "clause_id": "1",
+          "quote": "This Commercial Term Loan Agreement (\"Agreement\") is entered into between Meridian Manufacturing LLC, a limited liability company (\"Borrower\"), and Highland Capital Bank, N.A. (\"Lender\").",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "medium"
+    },
+    {
+      "rule_id": "POL-08",
+      "rule_description": "Loan maturity/term must be explicitly stated.",
+      "status": "pass",
+      "rationale": "The maturity clause specifies a term of 84 months from the agreement date.",
+      "evidence": [
+        {
+          "clause_id": "4.1",
+          "quote": "4.1 The Loan shall mature 84 months from the date of this Agreement, at which point all outstanding principal and accrued interest shall be due in full.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "medium"
+    },
+    {
+      "rule_id": "POL-09",
+      "rule_description": "Financial reporting obligations must be specified (frequency and type of reports).",
+      "status": "pass",
+      "rationale": "The reporting obligations clause details quarterly unaudited and annual audited financial statements with submission timelines.",
+      "evidence": [
+        {
+          "clause_id": "7.1",
+          "quote": "7.1 Borrower shall deliver to Lender quarterly unaudited financial statements within 45 days of each fiscal quarter end, and annual audited financial statements within 120 days of each fiscal year end.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "medium"
+    },
+    {
+      "rule_id": "POL-10",
+      "rule_description": "Events of default must be enumerated.",
+      "status": "pass",
+      "rationale": "The agreement lists specific events that constitute an Event of Default.",
+      "evidence": [
+        {
+          "clause_id": "8.1",
+          "quote": "8.1 Each of the following constitutes an Event of Default under this Agreement: (a) failure to pay any principal or interest when due; (b) breach of any financial covenant in Section 5; (c) any material misrepresentation by Borrower; (d) insolvency or bankruptcy filing by Borrower; (e) a change of control of Borrower without Lender's prior written consent.",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "severity": "medium"
+    },
+    {
+      "rule_id": "POL-11",
+      "rule_description": "Any referenced schedule, exhibit, or appendix must actually be attached/present in the document set.",
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
+      "severity": "medium"
+    },
+    {
+      "rule_id": "POL-12",
+      "rule_description": "Prepayment terms must be defined (permitted or restricted, and any penalty).",
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
+      "severity": "low"
+    },
+    {
+      "rule_id": "POL-13",
+      "rule_description": "Covenant compliance certification frequency must be specified.",
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
+      "severity": "low"
+    },
+    {
+      "rule_id": "POL-14",
+      "rule_description": "Governing law and jurisdiction must be specified.",
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
+      "severity": "low"
+    },
+    {
+      "rule_id": "POL-15",
+      "rule_description": "Any 'reasonable efforts' / 'commercially reasonable' style covenant must have an objective, measurable standard attached, or it is non-compliant with policy drafting standards.",
+      "status": "needs_human_review",
+      "rationale": "Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+      "evidence": [],
+      "severity": "medium"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Excessive Loan\u2011to\u2011Value Ratio",
+      "category": "financial",
+      "severity": "high",
+      "likelihood": "high",
+      "rationale": "The covenant sets LTV at 82%, which exceeds the allowed maximum of 75% per policy, increasing loss severity in adverse scenarios.",
+      "evidence": [
+        {
+          "clause_id": "5.2",
+          "quote": "Maximum Loan-to-Value (LTV) Ratio (covenant): 82%",
+          "page": null,
+          "verified": false,
+          "verification_method": "unverified"
+        }
+      ],
+      "mitigation": "Renegotiate the LTV covenant, add supplemental collateral, or reduce the loan amount to bring LTV within policy limits."
+    },
+    {
+      "title": "Missing Definition of Change of Control",
+      "category": "legal",
+      "severity": "medium",
+      "likelihood": "medium",
+      "rationale": "Clause 8.1 references a change of control event without defining the term, creating ambiguity and potential disputes over consent requirements.",
+      "evidence": [
+        {
+          "clause_id": "8.1",
+          "quote": "a change of control of Borrower without Lender's prior written consent",
+          "page": null,
+          "verified": true,
+          "verification_method": "exact"
+        }
+      ],
+      "mitigation": "Request the borrower to insert a precise definition of \"Change of Control\" and outline the lender's consent process."
+    },
+    {
+      "title": "Absent Principal Repayment Schedule",
+      "category": "operational",
+      "severity": "medium",
+      "likelihood": "medium",
+      "rationale": "The agreement specifies loan amount and maturity but does not detail periodic principal repayments, hindering cash\u2011flow planning and covenant monitoring.",
+      "evidence": [
+        {
+          "clause_id": "2.1",
+          "quote": "Loan Amount (value): $4,200,000",
+          "page": null,
+          "verified": false,
+          "verification_method": "unverified"
+        }
+      ],
+      "mitigation": "Obtain a detailed amortization schedule outlining payment dates and amounts."
+    },
+    {
+      "title": "No Collateral Appraisal Provided",
+      "category": "financial",
+      "severity": "medium",
+      "likelihood": "medium",
+      "rationale": "While a first\u2011priority lien is granted (clause 6.1), the absence of an appraisal date/value prevents accurate valuation of the security.",
+      "evidence": [
+        {
+          "clause_id": "6.1",
+          "quote": "First\u2011priority lien on the manufacturing facility located at 4400 Industrial Parkway, Austin, TX 78744",
+          "page": null,
+          "verified": true,
+          "verification_method": "fuzzy"
+        }
+      ],
+      "mitigation": "Secure an independent appraisal of the manufacturing facility and attach the report to the loan file."
+    },
+    {
+      "title": "Origination Fee Not Disclosed",
+      "category": "financial",
+      "severity": "low",
+      "likelihood": "low",
+      "rationale": "The agreement does not mention any origination fee, which may affect total loan cost and compliance with fee disclosure policies.",
+      "evidence": [],
+      "mitigation": "Confirm with the lender whether an origination fee applies and obtain written disclosure if so."
+    },
+    {
+      "title": "Exact Calendar Maturity Date Unspecified",
+      "category": "operational",
+      "severity": "low",
+      "likelihood": "low",
+      "rationale": "Clause 4.1 provides a term of 84 months but does not state the specific maturity date, complicating schedule tracking.",
+      "evidence": [
+        {
+          "clause_id": "4.1",
+          "quote": "Maturity (date): 84 months from the date of this Agreement",
+          "page": null,
+          "verified": false,
+          "verification_method": "unverified"
+        }
+      ],
+      "mitigation": "Request the precise maturity date based on the agreement execution date."
+    }
+  ],
+  "executive_summary": "The loan agreement for Meridian Manufacturing LLC presents several material risks: the LTV covenant of 82% exceeds the policy limit of 75%, and key terms such as the principal repayment schedule, collateral appraisal, origination fee, and a precise definition of Change of Control are absent, creating legal and operational uncertainty. These gaps, combined with the high\u2011risk LTV breach, elevate financial and compliance exposure. Immediate clarification and amendment of the missing provisions are required to mitigate potential defaults and regulatory concerns.",
+  "follow_up_actions": [
+    "Obtain a formal collateral appraisal and document the valuation date and amount.",
+    "Negotiate a reduction of the LTV ratio or provide additional collateral to meet the 75% policy ceiling.",
+    "Request a detailed principal repayment schedule, including dates and amounts.",
+    "Add a clear definition of \"Change of Control\" and any associated consent requirements.",
+    "Confirm whether an origination fee applies and, if so, disclose its amount and terms.",
+    "Specify the exact calendar maturity date for the 84\u2011month term."
+  ],
+  "escalations": [
+    "Compliance rule 'POL-03' FAILED (high): Maximum Loan-to-Value (LTV) ratio is 75%.",
+    "Compliance rule 'POL-11' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-12' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-13' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-14' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Compliance rule 'POL-15' needs human review: Automated compliance check failed due to a system error (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}); review manually.",
+    "Missing/ambiguous information: Exact calendar maturity date not specified",
+    "Missing/ambiguous information: Principal repayment schedule not specified",
+    "Missing/ambiguous information: Collateral appraisal date/value not provided",
+    "Missing/ambiguous information: Definition of \"Change of Control\" not provided",
+    "Missing/ambiguous information: Origination fee not mentioned"
+  ],
+  "overall_status": "human_review",
+  "errors": [
+    "compliance_batch_failed (['POL-11', 'POL-12', 'POL-13', 'POL-14', 'POL-15']): Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01jmqcc8bwfgg8bkdnp6tewjxw` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 1817, Requested 6571. Please try again in 2.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "retry_count": 0
+}
